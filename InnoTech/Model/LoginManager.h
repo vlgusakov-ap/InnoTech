@@ -6,25 +6,30 @@
 //  Copyright © 2016 Vladyslav Gusakov. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 @import UIKit;
+@class ITUser;
 
-//@protocol FacebookUtilsDelegate <NSObject>
-//
-//- (void) facebookSignOut;
-//
-//@end
+typedef NS_ENUM(NSInteger, FacebookAction) {
+    LoggedOut = 0,
+    LoggedIn = 1
+};
+
+@protocol LoginManagerDelegate <NSObject>
+- (void) loginManagerDidPerformFacebookAction:(FacebookAction)action;
+@end
 
 @interface LoginManager : NSObject
++ (id) sharedManager;
 
-- (void) loginWithFacebook;
+//facebook login
+- (void) loginWithFacebook:(id) delegate;
+- (void) checkFacebookLoginStatus;
+
+//firebase login
 - (void) loginWithFirebase;
-
 - (void) reauthWithFirebase;
 
-@property (nonatomic, strong) UIButton *facebookButton;
-@property (nonatomic, strong) id delegate;
-
-- (void) checkStatus;
+@property (nonatomic, strong) id<LoginManagerDelegate> delegate;
+@property (nonatomic, strong) ITUser *currentUser;
 
 @end

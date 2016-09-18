@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1479003C207A855726CCFFDF /* Pods_InnoTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A8E651570682A4D9B83707 /* Pods_InnoTech.framework */; };
 		210DFB861D3F574B00E815B6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210DFB851D3F574B00E815B6 /* StoreKit.framework */; };
+		211D9EE51D8E4DBF006FB309 /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 211D9EE41D8E4DBF006FB309 /* FacebookManager.m */; };
+		211D9EE81D8E4ED5006FB309 /* ITUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 211D9EE71D8E4ED5006FB309 /* ITUser.m */; };
+		211D9EEC1D8E5FEB006FB309 /* FirebaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 211D9EEB1D8E5FEB006FB309 /* FirebaseManager.m */; };
+		211D9EF01D8E60FB006FB309 /* FacebookButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 211D9EEF1D8E60FB006FB309 /* FacebookButton.m */; };
 		215CB95F1D7D0AD80093702A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 215CB9501D7D0AD80093702A /* IAPHelper.m */; };
 		215CB9601D7D0AD80093702A /* IAPShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 215CB9521D7D0AD80093702A /* IAPShare.m */; };
 		215CB9611D7D0AD80093702A /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 215CB9541D7D0AD80093702A /* NSString+Base64.m */; };
@@ -121,6 +125,14 @@
 /* Begin PBXFileReference section */
 		210DFB851D3F574B00E815B6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		210DFB871D3F598500E815B6 /* InnoTech.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = InnoTech.entitlements; sourceTree = "<group>"; };
+		211D9EE31D8E4DBF006FB309 /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookManager.h; path = Model/FacebookManager.h; sourceTree = "<group>"; };
+		211D9EE41D8E4DBF006FB309 /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookManager.m; path = Model/FacebookManager.m; sourceTree = "<group>"; };
+		211D9EE61D8E4ED5006FB309 /* ITUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ITUser.h; path = Model/ITUser.h; sourceTree = "<group>"; };
+		211D9EE71D8E4ED5006FB309 /* ITUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ITUser.m; path = Model/ITUser.m; sourceTree = "<group>"; };
+		211D9EEA1D8E5FEB006FB309 /* FirebaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirebaseManager.h; path = Model/FirebaseManager.h; sourceTree = "<group>"; };
+		211D9EEB1D8E5FEB006FB309 /* FirebaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirebaseManager.m; path = Model/FirebaseManager.m; sourceTree = "<group>"; };
+		211D9EEE1D8E60FB006FB309 /* FacebookButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookButton.h; path = Model/FacebookButton.h; sourceTree = "<group>"; };
+		211D9EEF1D8E60FB006FB309 /* FacebookButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookButton.m; path = Model/FacebookButton.m; sourceTree = "<group>"; };
 		215CB94F1D7D0AD80093702A /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAPHelper.h; path = IAPHelper/IAPHelper.h; sourceTree = "<group>"; };
 		215CB9501D7D0AD80093702A /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAPHelper.m; path = IAPHelper/IAPHelper.m; sourceTree = "<group>"; };
 		215CB9511D7D0AD80093702A /* IAPShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAPShare.h; path = IAPHelper/IAPShare.h; sourceTree = "<group>"; };
@@ -299,6 +311,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		211D9EE91D8E4FE7006FB309 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2161FEB41D394C63009A51F2 /* MainViewModel.h */,
+				2161FEB51D394C63009A51F2 /* MainViewModel.m */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		211D9EED1D8E5FF8006FB309 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2161FEB21D394C63009A51F2 /* LoginManager.h */,
+				2161FEB31D394C63009A51F2 /* LoginManager.m */,
+				211D9EE31D8E4DBF006FB309 /* FacebookManager.h */,
+				211D9EE41D8E4DBF006FB309 /* FacebookManager.m */,
+				211D9EEA1D8E5FEB006FB309 /* FirebaseManager.h */,
+				211D9EEB1D8E5FEB006FB309 /* FirebaseManager.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		215CB95D1D7D0AD80093702A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,8 +372,6 @@
 				2161FEA01D394BDB009A51F2 /* Constants.h */,
 				2161FEA21D394BDB009A51F2 /* MyManager.h */,
 				2161FEA31D394BDB009A51F2 /* MyManager.m */,
-				21BF483F1D8E2CB600409715 /* PremiumManager.h */,
-				21BF48401D8E2CB600409715 /* PremiumManager.m */,
 				2161FEA41D394BDB009A51F2 /* Reachability.h */,
 				2161FEA51D394BDB009A51F2 /* Reachability.m */,
 				2161FEA61D394BDB009A51F2 /* RNCachingURLProtocol.h */,
@@ -355,14 +387,17 @@
 				2161FEAF1D394C63009A51F2 /* AdMob.m */,
 				2161FEB01D394C63009A51F2 /* DetailModel.h */,
 				2161FEB11D394C63009A51F2 /* DetailModel.m */,
-				2161FEB21D394C63009A51F2 /* LoginManager.h */,
-				2161FEB31D394C63009A51F2 /* LoginManager.m */,
-				2161FEB41D394C63009A51F2 /* MainViewModel.h */,
-				2161FEB51D394C63009A51F2 /* MainViewModel.m */,
+				211D9EED1D8E5FF8006FB309 /* Login */,
+				21BF483F1D8E2CB600409715 /* PremiumManager.h */,
+				21BF48401D8E2CB600409715 /* PremiumManager.m */,
 				2161FEB81D394C63009A51F2 /* Product.h */,
 				2161FEB91D394C63009A51F2 /* Product.m */,
+				211D9EE61D8E4ED5006FB309 /* ITUser.h */,
+				211D9EE71D8E4ED5006FB309 /* ITUser.m */,
 				215F277A1D3AB3BB0072513B /* Menu.h */,
 				215F277B1D3AB3BB0072513B /* Menu.m */,
+				211D9EEE1D8E60FB006FB309 /* FacebookButton.h */,
+				211D9EEF1D8E60FB006FB309 /* FacebookButton.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -544,6 +579,7 @@
 				210DFB871D3F598500E815B6 /* InnoTech.entitlements */,
 				2161FEAD1D394BE0009A51F2 /* Global */,
 				2161FEC01D394C69009A51F2 /* Model */,
+				211D9EE91D8E4FE7006FB309 /* ViewModel */,
 				2161FEC31D394C7F009A51F2 /* View */,
 				2161FEE21D394CAC009A51F2 /* ViewController */,
 				2161FEE31D394CCA009A51F2 /* CustomClasses */,
@@ -798,16 +834,20 @@
 				2161FF021D394D49009A51F2 /* NSString+MD5.m in Sources */,
 				2161FF031D394D49009A51F2 /* NSString+Sha1.m in Sources */,
 				2161FEDC1D394CA7009A51F2 /* MainViewController.m in Sources */,
+				211D9EEC1D8E5FEB006FB309 /* FirebaseManager.m in Sources */,
 				215CB9641D7D0AD80093702A /* IAPHelper-dummy.m in Sources */,
 				21CAC9041D7D3A7E000F5E89 /* PremiumButton.m in Sources */,
 				2161FEE01D394CA7009A51F2 /* RefineViewController.m in Sources */,
+				211D9EE51D8E4DBF006FB309 /* FacebookManager.m in Sources */,
 				2161FEDA1D394CA7009A51F2 /* ConfiguredMailComposeViewController.m in Sources */,
 				2161FEE81D394CE6009A51F2 /* CommentTableViewCell.m in Sources */,
+				211D9EF01D8E60FB006FB309 /* FacebookButton.m in Sources */,
 				2161FEBB1D394C63009A51F2 /* DetailModel.m in Sources */,
 				2161FEAA1D394BDB009A51F2 /* MyManager.m in Sources */,
 				215F277C1D3AB3BB0072513B /* Menu.m in Sources */,
 				2161FEBF1D394C63009A51F2 /* Product.m in Sources */,
 				215F27901D3F23A80072513B /* NoFavoritesView.m in Sources */,
+				211D9EE81D8E4ED5006FB309 /* ITUser.m in Sources */,
 				2161FEAB1D394BDB009A51F2 /* Reachability.m in Sources */,
 				2161FEDF1D394CA7009A51F2 /* PremiumViewController.m in Sources */,
 				2161FED81D394CA7009A51F2 /* AboutViewController.m in Sources */,

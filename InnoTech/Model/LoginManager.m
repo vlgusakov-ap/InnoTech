@@ -12,47 +12,77 @@
 @import FirebaseAuth;
 #import "HelpShiftCore.h"
 #import "HelpshiftSupport.h"
+#import "FacebookManager.h"
+#import "ITUser.h"
 
-static NSString* const kFacebookLogged = @"fbLogged";
+@interface LoginManager () <FacebookManagerDelegate>
 
-@implementation LoginManager {
+@end
+
+@implementation LoginManager
+{
     NSUserDefaults *defaults;
 }
 
-- (instancetype) init {
++ (id)sharedManager
+{
+    static LoginManager *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (instancetype) init
+{
     self = [super init];
     if (self) {
         defaults = [NSUserDefaults standardUserDefaults];
+        self.currentUser = [[ITUser alloc] init];
     }
     return self;
 }
 
-- (void) loginWithFacebook {
-    NSString *isLoggedIn = [defaults objectForKey:kFacebookLogged];
-    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+- (void) loginWithFacebook:(id)delegate
+{
+    self.delegate = delegate;
+    FacebookManager *facebookManager = [[FacebookManager alloc] initWithDelegate:self fromViewController:delegate];
     
-    if ([isLoggedIn isEqualToString:@"YES"]) {
-        [self facebookSignOut];
-        
-    } else {
-        [login
-         logInWithReadPermissions: @[@"public_profile", @"email"]
-         fromViewController:self.delegate
-         handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-             if (error) {
-                 NSLog(@"Process error");
-             } else if (result.isCancelled) {
-                 NSLog(@"Cancelled");
-             } else {
-                 NSLog(@"Logged in");
-                 NSLog(@"%@", result.token);
-
-                 [self loginWithFirebase];
-             }
-         }];
+    if (!self.currentUser.isLogged)
+    {
+        [facebookManager login];
+    }
+    else
+    {
+        [facebookManager logout];
     }
 }
 
+#pragma mark - FacebookManagerDelegate
+
+- (void) facebookManagerDidLoginWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error
+{
+    if (error) {
+         NSLog(@"Process error");
+     } else if (result.isCancelled) {
+         NSLog(@"Cancelled");
+     } else {
+         NSLog(@"Logged in");
+         NSLog(@"%@", result.token);
+         self.currentUser.isLogged = true;
+         [self loginWithFirebase];
+     }
+}
+
+- (void)facebookManagerDidLogOut
+{
+    self.currentUser.isLogged = false;
+    [self.delegate loginManagerDidPerformFacebookAction:LoggedOut];
+    
+    NSError *error;
+    [[FIRAuth auth] signOut:&error];
+}
 
 -(void) getUserData {
     
@@ -74,8 +104,12 @@ static NSString* const kFacebookLogged = @"fbLogged";
              [defaults setObject:name forKey:@"fbName"];
              [defaults setObject:email forKey:@"fbEmail"];
              [defaults setObject:@"YES" forKey:kFacebookLogged];
-             
              [defaults synchronize];
+
+             self.currentUser.name = name;
+             self.currentUser.email = email;
+             self.currentUser.imageURL = imageUrl;
+             
              
 //             [HelpshiftCore setName:name andEmail:email];
 //             [HelpshiftSupport setUserIdentifier:[FIRAuth auth].currentUser.uid];
@@ -122,19 +156,19 @@ static NSString* const kFacebookLogged = @"fbLogged";
                                       UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                                       [alertController addAction:ok];
                                       
-                                      [self.delegate presentViewController:alertController animated:YES completion:nil];
+//                                      [self.delegate presentViewController:alertController animated:YES completion:nil];
                                       
                                       
                                       if (!error) {
                                           NSLog(@"signed out");
                                       }
                                       [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                                          [self facebookConnected:false];
+                                          [self.delegate loginManagerDidPerformFacebookAction:LoggedOut];
                                       }];
                                       
                                   } else {
                                       [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                                          [self facebookConnected:true];
+                                          [self.delegate loginManagerDidPerformFacebookAction:LoggedIn];
                                       }];
                                       [self getUserData];
                                       
@@ -158,7 +192,7 @@ static NSString* const kFacebookLogged = @"fbLogged";
                 UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alertController addAction:ok];
                 
-                [self.delegate presentViewController:alertController animated:YES completion:nil];
+//                [self.delegate presentViewController:alertController animated:YES completion:nil];
                 
                 
                 if (!error) {
@@ -174,51 +208,15 @@ static NSString* const kFacebookLogged = @"fbLogged";
     
     return false;
 }
-
-- (void) facebookSignOut {
+- (void) checkFacebookLoginStatus {
     
-    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-    [login logOut];
-    [defaults setObject:@"NO" forKey:kFacebookLogged];
-    NSLog(@"logged out");
-    
-    [defaults setObject:nil forKey:@"fbImage"];
-    [defaults setObject:nil forKey:@"fbName"];
-    [defaults setObject:nil forKey:@"fbEmail"];
-    
-    [defaults synchronize];
-    
-    NSError *error;
-    [[FIRAuth auth] signOut:&error];
-    
-    if (!error) {
-        NSLog(@"signed out");
+    if ([[defaults objectForKey:kFacebookLogged] isEqualToString:@"YES"])
+    {
+        [self.delegate loginManagerDidPerformFacebookAction:LoggedIn];
+    } else
+    {
+        [self.delegate loginManagerDidPerformFacebookAction:LoggedOut];
     }
-    
-    [self facebookConnected:false];
-}
-
-- (void) facebookConnected: (BOOL)logged {
-    
-    if (logged) {
-        [self.facebookButton setTitle:@"Connected" forState:UIControlStateNormal];
-        [self.facebookButton setBackgroundImage:[UIImage imageNamed:@"green1"] forState:UIControlStateNormal];
-    } else {
-        [self.facebookButton setTitle:@"Disconnected" forState:UIControlStateNormal];
-        [self.facebookButton setBackgroundImage:[UIImage imageNamed:@"red1"] forState:UIControlStateNormal];
-    }
-}
-
-- (void) checkStatus {
-    
-    if ([[defaults objectForKey:kFacebookLogged] isEqualToString:@"YES"]) {
-        [self.facebookButton setTitle:@"Connected" forState:UIControlStateNormal];
-        [self.facebookButton setBackgroundImage:[UIImage imageNamed:@"green1"] forState:UIControlStateNormal];
-    } else {
-        [self.facebookButton setTitle:@"Disconnected" forState:UIControlStateNormal];
-        [self.facebookButton setBackgroundImage:[UIImage imageNamed:@"red1"] forState:UIControlStateNormal];
-    }
-
 }
 
 @end

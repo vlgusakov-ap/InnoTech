@@ -10,29 +10,24 @@
 #import "HelpshiftSupport.h"
 #import "HelpshiftCore.h"
 #import "MyManager.h"
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "ConfiguredMailComposeViewController.h"
 #import "LoginManager.h"
-#import "Constants.h"
-#import "IAPShare.h"
+//#import "Constants.h"
 #import "PremiumViewController.h"
 #import "PremiumButton.h"
 #import "PremiumManager.h"
+#import "FacebookButton.h"
 
 @import AFNetworking;
 @import MessageUI;
 @import FirebaseAuth;
 
-@interface SettingsViewController () <MFMailComposeViewControllerDelegate, MyManagerDelegate> {
+@interface SettingsViewController () <MFMailComposeViewControllerDelegate, MyManagerDelegate, LoginManagerDelegate> {
     NSUserDefaults *defaults;
-    NSString *facebookLogged;
-    NSData *appleOffline;
     MyManager *dao;
-    LoginManager *login;
 }
 
-@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+@property (weak, nonatomic) IBOutlet FacebookButton *facebookButton;
 @property (weak, nonatomic) IBOutlet PremiumButton *premiumButton;
 @property (weak, nonatomic) IBOutlet UIButton *helpButton;
 @property (weak, nonatomic) IBOutlet UIButton *contactButton;
@@ -58,12 +53,9 @@
     dao = [MyManager sharedManager];
     defaults = [NSUserDefaults standardUserDefaults];
     
-    login = [LoginManager new];
-    login.facebookButton = self.facebookButton;
-    login.delegate = self;
-    [login checkStatus];
+    [[LoginManager sharedManager] setDelegate:self];
+    [[LoginManager sharedManager] checkFacebookLoginStatus];
     
-    [self.cellularSwitch setOn:dao.useCellular];
     dao.delegate = self;
     self.infoLabel.hidden = true;
     
@@ -106,7 +98,7 @@
 }
 
 - (IBAction)facebookLogin:(id)sender {
-    [login loginWithFacebook];
+    [[LoginManager sharedManager] loginWithFacebook:self];
 }
 
 - (IBAction)triggerInfoLabel:(id)sender {
@@ -124,15 +116,12 @@
 }
 
 - (IBAction)switchCellular:(UISwitch *)sender {
-    if ([sender isOn]) {
-        dao.useCellular = true;
-        [defaults setObject:@YES forKey:@"useCellular"];
-    }
-    else {
-        dao.useCellular = false;
-        [defaults setObject:@NO forKey:@"useCellular"];
-    }
-    [defaults synchronize];
 }
 
+#pragma mark - LoginManagerDelegate
+
+- (void) loginManagerDidPerformFacebookAction:(FacebookAction)action
+{
+    self.facebookButton.connected = action;
+}
 @end

@@ -86,10 +86,10 @@
 
 - (BOOL) reachable {
     
-    BOOL _reachable = (BOOL) [[Reachability reachabilityWithHostName:[NSURL URLWithString:self.detailViewController.link].host] currentReachabilityStatus] != NotReachable;
-    
-    return ((_reachable && dao.useCellular)||
-            (dao.currentProduct.cached && [[MyManager sharedManager] premiumStatus] == Active));
+    BOOL isOnline =  ([[Reachability reachabilityWithHostName:[NSURL URLWithString:self.detailViewController.link].host] currentReachabilityStatus] != NotReachable);
+    BOOL isPremiumActive = ([[MyManager sharedManager] premiumStatus] == Active);
+    BOOL isCurrentProductCached = dao.currentProduct.cached;
+    return (isOnline || (isPremiumActive && isCurrentProductCached));
 }
 
 - (void) cacheCurrentObject {

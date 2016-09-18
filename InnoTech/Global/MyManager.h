@@ -53,7 +53,6 @@ typedef NS_ENUM(NSUInteger, FireBaseAction) {
 @property (nonatomic, strong) NSMutableArray <NSDictionary*> *currentComments;
 @property (nonatomic) BOOL toNewMsg;
 @property (strong, nonatomic) SDImageCache *imageCache;
-@property (nonatomic) BOOL useCellular;
 @property (nonatomic) BOOL menuOpened;
 
 + (id) sharedManager;

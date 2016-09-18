@@ -59,8 +59,6 @@
         self.cachedWebsites = [NSMutableDictionary dictionaryWithDictionary:cachedDict];
         [self fireBaseSetup];
         self.imageCache = [[SDImageCache alloc] initWithNamespace:@"innotech"];
-        NSNumber *useCell = [[NSUserDefaults standardUserDefaults] objectForKey:@"useCellular"];
-        self.useCellular = (useCell == nil) ? true : [useCell boolValue];
         
         //offline
 //        UIWindow* mainWindow = [[UIApplication sharedApplication] keyWindow];
