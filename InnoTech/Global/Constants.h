@@ -9,17 +9,10 @@
 @import UIKit;
 @import SDWebImage;
 
-typedef NS_ENUM(NSInteger, PremiumStatus) {
-    Inactive = 0,
-    Active = 1
-};
-
 static NSInteger kAdHeight = 100;
 static NSInteger kProductHeight = 160;
 
-//itunes connect
-static NSString *kiTunesPremiumProductID = @"innotech_one_month_premium";
-static NSString *kiTunesPremiumSharedSecret = @"295f09dde82b43998a22ea6a8f6c7042";
+
 
 static NSString *kHelpShiftApiKey = @"b282651e95bddabb072b6005cdd101b7";
 static NSString *kHelpShiftDomainName = @"innotech.helpshift.com";
@@ -52,5 +45,3 @@ static NSString *kImageSettings = @"settings";
 static NSString *kImageRefine = @"refine";
 
 static NSString *kFavorites = @"favorites";
-
-static NSString *kPremiumStatus = @"premiumStatus";

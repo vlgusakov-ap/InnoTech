@@ -8,11 +8,11 @@
 
 #import "NewCommentViewController.h"
 #import "MyManager.h"
-#import "Login.h"
+#import "LoginManager.h"
 
 @interface NewCommentViewController () {
     MyManager *dao;
-    Login *login;
+    LoginManager *login;
 }
 @property (weak, nonatomic) IBOutlet UITextView *comment;
 - (IBAction)cancel:(id)sender;
@@ -25,7 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     dao = [MyManager sharedManager];
-    login = [Login new];
+    login = [LoginManager new];
 }
 
 -(void) viewWillDisappear:(BOOL)animated {

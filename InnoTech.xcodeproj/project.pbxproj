@@ -28,7 +28,7 @@
 		2161FEAC1D394BDB009A51F2 /* RNCachingURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEA71D394BDB009A51F2 /* RNCachingURLProtocol.m */; };
 		2161FEBA1D394C63009A51F2 /* AdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEAF1D394C63009A51F2 /* AdMob.m */; };
 		2161FEBB1D394C63009A51F2 /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEB11D394C63009A51F2 /* DetailModel.m */; };
-		2161FEBC1D394C63009A51F2 /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEB31D394C63009A51F2 /* Login.m */; };
+		2161FEBC1D394C63009A51F2 /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEB31D394C63009A51F2 /* LoginManager.m */; };
 		2161FEBD1D394C63009A51F2 /* MainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEB51D394C63009A51F2 /* MainViewModel.m */; };
 		2161FEBF1D394C63009A51F2 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEB91D394C63009A51F2 /* Product.m */; };
 		2161FEC21D394C7C009A51F2 /* NoInternetConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2161FEC11D394C7C009A51F2 /* NoInternetConnectionView.xib */; };
@@ -112,9 +112,10 @@
 		217AFAC61D38462800E02BDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 217AFAC51D38462800E02BDE /* main.m */; };
 		217AFADC1D38465800E02BDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217AFADB1D38465800E02BDE /* Main.storyboard */; };
 		217AFADE1D38468100E02BDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217AFADD1D38468100E02BDE /* LaunchScreen.storyboard */; };
-		217AFAE01D38469B00E02BDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 217AFADF1D38469B00E02BDE /* Assets.xcassets */; };
+		21BF48411D8E2CB600409715 /* PremiumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BF48401D8E2CB600409715 /* PremiumManager.m */; };
 		21CAC9041D7D3A7E000F5E89 /* PremiumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CAC9031D7D3A7E000F5E89 /* PremiumButton.m */; };
 		21CAC9061D7D5523000F5E89 /* NoCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21CAC9051D7D5523000F5E89 /* NoCommentsView.xib */; };
+		21F4E5C71D8E340500D35835 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21F4E5C61D8E340500D35835 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,8 +157,8 @@
 		2161FEAF1D394C63009A51F2 /* AdMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdMob.m; path = Model/AdMob.m; sourceTree = "<group>"; };
 		2161FEB01D394C63009A51F2 /* DetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailModel.h; path = Model/DetailModel.h; sourceTree = "<group>"; };
 		2161FEB11D394C63009A51F2 /* DetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailModel.m; path = Model/DetailModel.m; sourceTree = "<group>"; };
-		2161FEB21D394C63009A51F2 /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Login.h; path = Model/Login.h; sourceTree = "<group>"; };
-		2161FEB31D394C63009A51F2 /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Login.m; path = Model/Login.m; sourceTree = "<group>"; };
+		2161FEB21D394C63009A51F2 /* LoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginManager.h; path = Model/LoginManager.h; sourceTree = "<group>"; };
+		2161FEB31D394C63009A51F2 /* LoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginManager.m; path = Model/LoginManager.m; sourceTree = "<group>"; };
 		2161FEB41D394C63009A51F2 /* MainViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewModel.h; path = Model/MainViewModel.h; sourceTree = "<group>"; };
 		2161FEB51D394C63009A51F2 /* MainViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewModel.m; path = Model/MainViewModel.m; sourceTree = "<group>"; };
 		2161FEB81D394C63009A51F2 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = Model/Product.h; sourceTree = "<group>"; };
@@ -265,10 +266,12 @@
 		217AFAD51D38462800E02BDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		217AFADB1D38465800E02BDE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		217AFADD1D38468100E02BDE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		217AFADF1D38469B00E02BDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		21BF483F1D8E2CB600409715 /* PremiumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PremiumManager.h; path = Global/PremiumManager.h; sourceTree = "<group>"; };
+		21BF48401D8E2CB600409715 /* PremiumManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PremiumManager.m; path = Global/PremiumManager.m; sourceTree = "<group>"; };
 		21CAC9021D7D3A7E000F5E89 /* PremiumButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PremiumButton.h; sourceTree = "<group>"; };
 		21CAC9031D7D3A7E000F5E89 /* PremiumButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PremiumButton.m; sourceTree = "<group>"; };
 		21CAC9051D7D5523000F5E89 /* NoCommentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoCommentsView.xib; sourceTree = "<group>"; };
+		21F4E5C61D8E340500D35835 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25BA086C3E6F30A90C49920E /* Pods-InnoTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InnoTech.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InnoTech/Pods-InnoTech.debug.xcconfig"; sourceTree = "<group>"; };
 		41A80ECF6249D758942BFE08 /* Pods-InnoTech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InnoTech.release.xcconfig"; path = "Pods/Target Support Files/Pods-InnoTech/Pods-InnoTech.release.xcconfig"; sourceTree = "<group>"; };
 		46A8E651570682A4D9B83707 /* Pods_InnoTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InnoTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,6 +338,8 @@
 				2161FEA01D394BDB009A51F2 /* Constants.h */,
 				2161FEA21D394BDB009A51F2 /* MyManager.h */,
 				2161FEA31D394BDB009A51F2 /* MyManager.m */,
+				21BF483F1D8E2CB600409715 /* PremiumManager.h */,
+				21BF48401D8E2CB600409715 /* PremiumManager.m */,
 				2161FEA41D394BDB009A51F2 /* Reachability.h */,
 				2161FEA51D394BDB009A51F2 /* Reachability.m */,
 				2161FEA61D394BDB009A51F2 /* RNCachingURLProtocol.h */,
@@ -350,8 +355,8 @@
 				2161FEAF1D394C63009A51F2 /* AdMob.m */,
 				2161FEB01D394C63009A51F2 /* DetailModel.h */,
 				2161FEB11D394C63009A51F2 /* DetailModel.m */,
-				2161FEB21D394C63009A51F2 /* Login.h */,
-				2161FEB31D394C63009A51F2 /* Login.m */,
+				2161FEB21D394C63009A51F2 /* LoginManager.h */,
+				2161FEB31D394C63009A51F2 /* LoginManager.m */,
 				2161FEB41D394C63009A51F2 /* MainViewModel.h */,
 				2161FEB51D394C63009A51F2 /* MainViewModel.m */,
 				2161FEB81D394C63009A51F2 /* Product.h */,
@@ -546,13 +551,13 @@
 				2161FEF11D394D26009A51F2 /* SWRevealViewController */,
 				2161FEF51D394D3D009A51F2 /* Categories */,
 				215CB95E1D7D0AD80093702A /* IAPHelper */,
+				21F4E5C61D8E340500D35835 /* Assets.xcassets */,
 				2161FF051D394D60009A51F2 /* Images */,
 				217AFADB1D38465800E02BDE /* Main.storyboard */,
 				217AFADD1D38468100E02BDE /* LaunchScreen.storyboard */,
 				215F27831D3F11880072513B /* physics.png */,
 				215F27851D3F11BA0072513B /* exterior.png */,
 				215F27871D3F12250072513B /* suitcase.png */,
-				217AFADF1D38469B00E02BDE /* Assets.xcassets */,
 				217AFAD51D38462800E02BDE /* Info.plist */,
 				2161FF761D394DBB009A51F2 /* GoogleService-Info.plist */,
 				217AFAC41D38462800E02BDE /* Supporting Files */,
@@ -655,6 +660,7 @@
 				2161FF611D394D78009A51F2 /* innotech.png in Resources */,
 				217AFADE1D38468100E02BDE /* LaunchScreen.storyboard in Resources */,
 				2161FF701D394D78009A51F2 /* sport.png in Resources */,
+				21F4E5C71D8E340500D35835 /* Assets.xcassets in Resources */,
 				2161FF5F1D394D78009A51F2 /* loading_screen.jpg in Resources */,
 				215F27841D3F11880072513B /* physics.png in Resources */,
 				2161FF5C1D394D78009A51F2 /* idea.png in Resources */,
@@ -663,7 +669,6 @@
 				2161FF421D394D78009A51F2 /* appstore_about.png in Resources */,
 				2161FF661D394D78009A51F2 /* offline.png in Resources */,
 				2161FF491D394D78009A51F2 /* create_new.png in Resources */,
-				217AFAE01D38469B00E02BDE /* Assets.xcassets in Resources */,
 				2161FF4B1D394D78009A51F2 /* delete_sign_filled.png in Resources */,
 				2161FF461D394D78009A51F2 /* checkmark.png in Resources */,
 				2161FF431D394D78009A51F2 /* bevel.jpg in Resources */,
@@ -788,7 +793,7 @@
 				2161FEE91D394CE6009A51F2 /* MainTableViewCell.m in Sources */,
 				2161FEBD1D394C63009A51F2 /* MainViewModel.m in Sources */,
 				2161FF041D394D49009A51F2 /* NSURLRequest+Extended.m in Sources */,
-				2161FEBC1D394C63009A51F2 /* Login.m in Sources */,
+				2161FEBC1D394C63009A51F2 /* LoginManager.m in Sources */,
 				215CB9621D7D0AD80093702A /* SFHFKeychainUtils.m in Sources */,
 				2161FF021D394D49009A51F2 /* NSString+MD5.m in Sources */,
 				2161FF031D394D49009A51F2 /* NSString+Sha1.m in Sources */,
@@ -809,6 +814,7 @@
 				2161FEE11D394CA7009A51F2 /* SettingsViewController.m in Sources */,
 				215CB95F1D7D0AD80093702A /* IAPHelper.m in Sources */,
 				2161FED91D394CA7009A51F2 /* CommentsViewController.m in Sources */,
+				21BF48411D8E2CB600409715 /* PremiumManager.m in Sources */,
 				2161FEAC1D394BDB009A51F2 /* RNCachingURLProtocol.m in Sources */,
 				2161FEEF1D394D0D009A51F2 /* MainTableViewDataSource.m in Sources */,
 				2161FF001D394D49009A51F2 /* MainTableViewCell+ConfigureForProduct.m in Sources */,

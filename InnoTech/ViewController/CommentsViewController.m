@@ -12,12 +12,12 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "Constants.h"
 #import "SettingsViewController.h"
-#import "Login.h"
+#import "LoginManager.h"
 @import AFNetworking;
 
 @interface CommentsViewController () <MyManagerDelegate>{
     MyManager *dao;
-    Login *login;
+    LoginManager *login;
 }
 - (IBAction)openNewMsg:(id)sender;
 @property (weak, nonatomic) UITableView *tableViewRef;
@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     dao.toNewMsg = false;
-    login = [Login new];
+    login = [LoginManager new];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

@@ -13,11 +13,12 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "ConfiguredMailComposeViewController.h"
-#import "Login.h"
+#import "LoginManager.h"
 #import "Constants.h"
 #import "IAPShare.h"
 #import "PremiumViewController.h"
 #import "PremiumButton.h"
+#import "PremiumManager.h"
 
 @import AFNetworking;
 @import MessageUI;
@@ -28,7 +29,7 @@
     NSString *facebookLogged;
     NSData *appleOffline;
     MyManager *dao;
-    Login *login;
+    LoginManager *login;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *facebookButton;
@@ -57,7 +58,7 @@
     dao = [MyManager sharedManager];
     defaults = [NSUserDefaults standardUserDefaults];
     
-    login = [Login new];
+    login = [LoginManager new];
     login.facebookButton = self.facebookButton;
     login.delegate = self;
     [login checkStatus];
@@ -72,7 +73,7 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.premiumButton.active = [dao premiumStatus];
+    self.premiumButton.active = [[PremiumManager sharedManager] premiumStatus];
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -114,7 +115,7 @@
 
 - (IBAction)activatePremium:(id)sender {
         
-    if ([defaults integerForKey:kPremiumStatus] == Inactive) {
+    if ([[PremiumManager sharedManager] premiumStatus] == Inactive) {
         PremiumViewController *premiumVC = [self.storyboard instantiateViewControllerWithIdentifier:@"premiumVC"];
         premiumVC.presentedModally = YES;
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:premiumVC];

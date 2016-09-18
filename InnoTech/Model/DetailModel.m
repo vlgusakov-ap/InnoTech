@@ -11,6 +11,7 @@
 #import "Reachability.h"
 #import "MyManager.h"
 #import "MBProgressHUD.h"
+#import "PremiumManager.h"
 
 @class DetailViewController;
 
@@ -58,7 +59,7 @@
     {
         [hud hideAnimated:YES];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        if ([[MyManager sharedManager] premiumStatus] == Active) {
+        if ([[PremiumManager sharedManager] premiumStatus] == Active) {
             [self cacheCurrentObject];
         }
 

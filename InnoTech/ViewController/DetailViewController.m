@@ -38,11 +38,6 @@
 
     [self.model configureVC];
     dao = [MyManager sharedManager];
-    
-//    self.webView.contentMode = UIViewContentModeScaleAspectFit;
-//    self.webView.scalesPageToFit = YES;
-//    self.webView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-    // Double check with logging
 }
 
 - (void) viewWillAppear:(BOOL)animated  {

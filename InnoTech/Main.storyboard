@@ -20,7 +20,7 @@
                         <viewControllerLayoutGuide type="bottom" id="rdG-6c-3Wu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d3W-N9-YOr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -42,7 +42,7 @@
                         <viewControllerLayoutGuide type="bottom" id="TWG-kR-SSf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iJZ-g4-aRU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noE-cJ-nMo">
@@ -54,14 +54,14 @@
                                     <navigationItem title="CHOOSE TYPE" id="6no-rV-Fqe">
                                         <barButtonItem key="leftBarButtonItem" id="woF-LU-JXy">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vFG-Ya-tkG">
-                                                <rect key="frame" x="20" y="31" width="25" height="25"/>
+                                                <rect key="frame" x="16" y="31" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="delete_sign_filled.png"/>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" id="kOd-y8-IVz">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jA2-W3-X11">
-                                                <rect key="frame" x="334" y="31" width="60" height="25"/>
+                                                <rect key="frame" x="299" y="31" width="60" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="✓All">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,10 +76,10 @@
                                 <color key="tintColor" red="0.41189527510000001" green="0.41190570589999997" blue="0.41190013289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="subCell" id="hlE-Ke-3Vg">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hlE-Ke-3Vg" id="rB7-4b-NF8">
-                                            <frame key="frameInset" width="414" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -155,7 +155,7 @@
                         <viewControllerLayoutGuide type="bottom" id="w6Q-Kw-zhq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JuJ-YO-5Y5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPZ-ju-N7x">
@@ -411,12 +411,12 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="yDh-aL-ZDf"/>
-                                        <exclude reference="MJC-7G-lUV"/>
-                                        <exclude reference="jku-Rz-QIc"/>
-                                        <exclude reference="V4x-8s-AHm"/>
                                         <exclude reference="Jxp-PO-l9O"/>
                                         <exclude reference="PKV-xG-oGL"/>
                                         <exclude reference="UYT-cE-OTe"/>
+                                        <exclude reference="V4x-8s-AHm"/>
+                                        <exclude reference="MJC-7G-lUV"/>
+                                        <exclude reference="jku-Rz-QIc"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
@@ -427,12 +427,12 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="yDh-aL-ZDf"/>
-                                        <include reference="MJC-7G-lUV"/>
-                                        <include reference="jku-Rz-QIc"/>
-                                        <include reference="V4x-8s-AHm"/>
                                         <include reference="Jxp-PO-l9O"/>
                                         <include reference="PKV-xG-oGL"/>
                                         <include reference="UYT-cE-OTe"/>
+                                        <include reference="V4x-8s-AHm"/>
+                                        <include reference="MJC-7G-lUV"/>
+                                        <include reference="jku-Rz-QIc"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -556,13 +556,13 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Tn9-wz-dhY"/>
+                                <exclude reference="YUv-Jo-uzo"/>
                                 <exclude reference="3u3-H8-uHJ"/>
                                 <exclude reference="MRp-IK-tdI"/>
                                 <exclude reference="eLi-2Q-0Wu"/>
                                 <exclude reference="3Im-Uh-KKU"/>
                                 <exclude reference="LPa-uS-fuG"/>
                                 <exclude reference="kRq-Fl-jWR"/>
-                                <exclude reference="YUv-Jo-uzo"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -572,13 +572,13 @@
                             </mask>
                             <mask key="constraints">
                                 <include reference="Tn9-wz-dhY"/>
+                                <include reference="YUv-Jo-uzo"/>
                                 <include reference="3u3-H8-uHJ"/>
                                 <include reference="MRp-IK-tdI"/>
                                 <include reference="eLi-2Q-0Wu"/>
                                 <include reference="3Im-Uh-KKU"/>
                                 <include reference="LPa-uS-fuG"/>
                                 <include reference="kRq-Fl-jWR"/>
-                                <include reference="YUv-Jo-uzo"/>
                             </mask>
                         </variation>
                     </view>
@@ -610,15 +610,15 @@
             <objects>
                 <tableViewController storyboardIdentifier="mainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m8N-Yd-nUJ" customClass="MainViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ivw-PJ-D6e">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="160" id="GYO-2j-j9O" customClass="MainTableViewCell">
-                                <rect key="frame" x="0.0" y="92" width="414" height="160"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GYO-2j-j9O" id="Zcz-8n-uXc">
-                                    <frame key="frameInset" width="414" height="159.5"/>
+                                    <frame key="frameInset" width="375" height="159.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading.gif" translatesAutoresizingMaskIntoConstraints="NO" id="paF-Dw-mi9"/>
@@ -688,10 +688,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdCell" rowHeight="100" id="azq-vZ-N8C">
-                                <rect key="frame" x="0.0" y="252" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="252" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="azq-vZ-N8C" id="l19-zY-UP1">
-                                    <frame key="frameInset" width="414" height="99.5"/>
+                                    <frame key="frameInset" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -738,7 +738,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5p1-At-uAc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cW1-Tb-Kjk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2jL-vZ-MKe">
@@ -799,15 +799,15 @@
             <objects>
                 <tableViewController id="I3l-K0-C61" customClass="CommentsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="a1X-BF-dFP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" rowHeight="90" id="cIo-mg-KOq" customClass="CommentTableViewCell">
-                                <rect key="frame" x="0.0" y="92" width="414" height="90"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cIo-mg-KOq" id="yje-nA-yUG">
-                                    <frame key="frameInset" width="414" height="89.5"/>
+                                    <frame key="frameInset" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2AF-nb-IYp">
@@ -885,7 +885,7 @@
                         <viewControllerLayoutGuide type="bottom" id="C5I-Ut-jl8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NjK-gX-oZk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXh-Gm-RD4">
@@ -896,7 +896,7 @@
                                     <navigationItem title="New Comment" id="tMm-Jk-PEu">
                                         <barButtonItem key="leftBarButtonItem" id="LKf-Tq-sU5">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DWz-9O-kOX">
-                                                <rect key="frame" x="20" y="29" width="50" height="30"/>
+                                                <rect key="frame" x="16" y="29" width="50" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Cancel"/>
                                                 <connections>
@@ -906,7 +906,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" id="jbj-cY-C2k">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gME-Ae-roy">
-                                                <rect key="frame" x="344" y="29" width="50" height="30"/>
+                                                <rect key="frame" x="317" y="29" width="50" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Send"/>
                                                 <connections>
@@ -947,15 +947,15 @@
             <objects>
                 <tableViewController storyboardIdentifier="menuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vh2-4b-HmB" customClass="MenuViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ioy-oz-cag">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoriesViewCell" id="nJX-0T-WXC">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nJX-0T-WXC" id="5Vv-Ci-bjf">
-                                    <frame key="frameInset" width="414" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29n-Nw-rSZ">
@@ -972,10 +972,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="viewCell" id="wtp-3q-beN">
-                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wtp-3q-beN" id="LXl-nK-0RC">
-                                    <frame key="frameInset" width="414" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oX0-vf-5G8">
@@ -992,10 +992,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="aboutCell" id="6xY-Ug-gRC">
-                                <rect key="frame" x="0.0" y="116" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6xY-Ug-gRC" id="0gK-i0-pjU">
-                                    <frame key="frameInset" width="414" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hte-jF-hJ2">
@@ -1031,7 +1031,7 @@
                         <viewControllerLayoutGuide type="bottom" id="LWR-7i-3BL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ahv-iV-OfH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do I get if I subscribe?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQ1-sr-SqP">
@@ -1111,16 +1111,16 @@
                         <leftBarButtonItems>
                             <barButtonItem id="QZY-44-9Do">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7Ia-Kl-3xy">
-                                    <rect key="frame" x="20" y="10" width="24" height="24"/>
+                                    <rect key="frame" x="16" y="10" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="menu"/>
                                 </button>
                             </barButtonItem>
                             <barButtonItem title=" " id="9GQ-Ut-3Jc"/>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Reb-fg-KK0">
+                        <barButtonItem key="rightBarButtonItem" id="Reb-fg-KK0">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IJ4-W2-vth">
-                                <rect key="frame" x="334" y="7" width="60" height="30"/>
+                                <rect key="frame" x="299" y="7" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Restore">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1185,7 +1185,7 @@
                         <viewControllerLayoutGuide type="bottom" id="WAq-6F-qfb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8gA-uP-R8K">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="origami.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="g0S-sT-0dl"/>
@@ -1368,7 +1368,7 @@
         <image name="more" width="32" height="32"/>
         <image name="origami.jpg" width="800" height="881"/>
         <image name="red1" width="602" height="86"/>
-        <image name="refresh" width="32" height="32"/>
+        <image name="refresh" width="48" height="48"/>
         <image name="settings" width="24" height="24"/>
         <image name="twitterc.png" width="96" height="96"/>
     </resources>

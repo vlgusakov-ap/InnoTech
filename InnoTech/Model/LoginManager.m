@@ -6,14 +6,16 @@
 //  Copyright © 2016 Vladyslav Gusakov. All rights reserved.
 //
 
-#import "Login.h"
+#import "LoginManager.h"
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 @import FirebaseAuth;
 #import "HelpShiftCore.h"
 #import "HelpshiftSupport.h"
 
-@implementation Login {
+static NSString* const kFacebookLogged = @"fbLogged";
+
+@implementation LoginManager {
     NSUserDefaults *defaults;
 }
 
@@ -26,7 +28,7 @@
 }
 
 - (void) loginWithFacebook {
-    NSString *isLoggedIn = [defaults objectForKey:@"fbLogged"];
+    NSString *isLoggedIn = [defaults objectForKey:kFacebookLogged];
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     
     if ([isLoggedIn isEqualToString:@"YES"]) {
@@ -71,7 +73,7 @@
              [defaults setObject:imageUrl forKey:@"fbImage"];
              [defaults setObject:name forKey:@"fbName"];
              [defaults setObject:email forKey:@"fbEmail"];
-             [defaults setObject:@"YES" forKey:@"fbLogged"];
+             [defaults setObject:@"YES" forKey:kFacebookLogged];
              
              [defaults synchronize];
              
@@ -177,7 +179,7 @@
     
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     [login logOut];
-    [defaults setObject:@"NO" forKey:@"fbLogged"];
+    [defaults setObject:@"NO" forKey:kFacebookLogged];
     NSLog(@"logged out");
     
     [defaults setObject:nil forKey:@"fbImage"];
@@ -209,9 +211,7 @@
 
 - (void) checkStatus {
     
-    NSString *facebookLogged = @"fbLogged";
-    
-    if ([[defaults objectForKey:facebookLogged] isEqualToString:@"YES"]) {
+    if ([[defaults objectForKey:kFacebookLogged] isEqualToString:@"YES"]) {
         [self.facebookButton setTitle:@"Connected" forState:UIControlStateNormal];
         [self.facebookButton setBackgroundImage:[UIImage imageNamed:@"green1"] forState:UIControlStateNormal];
     } else {

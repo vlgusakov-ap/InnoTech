@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "MyManager.h"
 #import "MBProgressHUD.h"
+#import "PremiumManager.h"
 
 @interface PremiumViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
@@ -80,7 +81,7 @@
                 if([purchased isEqualToString:kiTunesPremiumProductID])
                 {
                     //enable the product here
-                    [[MyManager sharedManager] enablePremium:YES];
+                    [[PremiumManager sharedManager] enablePremium:YES];
                     
                 }
             }

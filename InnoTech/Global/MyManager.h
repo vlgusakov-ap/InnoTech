@@ -56,8 +56,6 @@ typedef NS_ENUM(NSUInteger, FireBaseAction) {
 @property (nonatomic) BOOL useCellular;
 @property (nonatomic) BOOL menuOpened;
 
-@property (nonatomic) PremiumStatus premiumStatus;
-
 + (id) sharedManager;
 
 - (void) fireBaseSetup;
@@ -68,7 +66,5 @@ typedef NS_ENUM(NSUInteger, FireBaseAction) {
 - (void) removeListenersForProduct: (NSString *) productKey;
 
 - (BOOL) isIphone5Screen;
-- (void) enablePremium: (BOOL) enable;
-- (void) initIAP;
 
 @end

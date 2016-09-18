@@ -14,7 +14,6 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 @import FirebaseRemoteConfig;
 #import <sys/sysctl.h>
-#import "IAPShare.h"
 
 @interface MyManager()
 
@@ -41,9 +40,6 @@
 - (id)init {
     if (self = [super init]) {
         
-        [self initIAP];
-
-        self.premiumStatus = [[NSUserDefaults standardUserDefaults] integerForKey:kPremiumStatus];
         [self startMonitoringInternetConnection]; //check internet connection in real time
         self.productsList = [NSMutableArray new];
         self.currentSection = kSectionFeatured;
@@ -342,31 +338,8 @@
     return false;
 }
 
-- (void) enablePremium: (BOOL) enable {
-    [[NSUserDefaults standardUserDefaults] setBool:enable forKey:kPremiumStatus];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
 
-- (void) initIAP
-{
-    //init iap
-    if(![IAPShare sharedHelper].iap) {
-        NSSet* dataSet = [[NSSet alloc] initWithObjects:kiTunesPremiumProductID, nil];
-        
-        [IAPShare sharedHelper].iap = [[IAPHelper alloc] initWithProductIdentifiers:dataSet];
-    }
-    [IAPShare sharedHelper].iap.production = NO;
-    
-    if([[IAPShare sharedHelper].iap isPurchasedProductsIdentifier:kiTunesPremiumProductID])
-    {
-        [self enablePremium:YES];
-    }
-    else
-    {
-        [self enablePremium:NO];
-    }
 
-}
 - (void)dealloc {
     // Should never be called, but just here for clarity really.
 }

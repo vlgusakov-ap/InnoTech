@@ -30,6 +30,7 @@
 #import "NSString+Sha1.h"
 #import "NSString+MD5.h"
 #import "MyManager.h"
+#import "PremiumManager.h"
 #import "NSURLRequest+Extended.h"
 
 #define WORKAROUND_MUTABLE_COPY_LEAK 1
@@ -230,7 +231,7 @@ static NSSet *RNCachingSupportedSchemes;
 
 - (BOOL) useCache 
 {
-    if ([[MyManager sharedManager] premiumStatus] == Inactive) {
+    if ([[PremiumManager sharedManager] premiumStatus] == Inactive) {
         return false;
     }
     

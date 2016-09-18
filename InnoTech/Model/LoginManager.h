@@ -15,7 +15,7 @@
 //
 //@end
 
-@interface Login : NSObject
+@interface LoginManager : NSObject
 
 - (void) loginWithFacebook;
 - (void) loginWithFirebase;
