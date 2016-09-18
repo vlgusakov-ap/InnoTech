@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_network.png" translatesAutoresizingMaskIntoConstraints="NO" id="vQU-uA-0xQ">
+                    <rect key="frame" x="250" y="155" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="1f0-8k-4Dl"/>
+                        <constraint firstAttribute="width" constant="100" id="xV4-Jl-EOT"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops... Looks like you are not connected to the internet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53E-mX-v6n">
+                    <rect key="frame" x="20" y="263" width="560" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="cfN-0N-k9H"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="53E-mX-v6n" firstAttribute="top" secondItem="vQU-uA-0xQ" secondAttribute="bottom" constant="8" id="69a-iM-yMT"/>
+                <constraint firstAttribute="trailing" secondItem="53E-mX-v6n" secondAttribute="trailing" constant="20" id="BXL-gW-hxq"/>
+                <constraint firstItem="vQU-uA-0xQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="155" id="Soh-SW-EwG"/>
+                <constraint firstItem="vQU-uA-0xQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="WT2-uc-lLc"/>
+                <constraint firstItem="53E-mX-v6n" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="qaR-an-yTw"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="no_network.png" width="512" height="512"/>
+    </resources>
+</document>

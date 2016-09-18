@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nothing1" translatesAutoresizingMaskIntoConstraints="NO" id="gcP-b3-QMJ">
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="gcP-b3-QMJ" secondAttribute="height" multiplier="437:238" id="4g8-Dk-AvK"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="7"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing here..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McI-ie-YND">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="mjw-79-2HN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be the first to leave a comment!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAC-bv-abc">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="VgI-jS-ZpK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DAC-bv-abc" firstAttribute="top" secondItem="gcP-b3-QMJ" secondAttribute="bottom" id="4FL-nW-C1R"/>
+                <constraint firstItem="gcP-b3-QMJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6kE-ng-0dv"/>
+                <constraint firstItem="gcP-b3-QMJ" firstAttribute="top" secondItem="McI-ie-YND" secondAttribute="bottom" constant="29.5" id="NX0-Zu-hNy"/>
+                <constraint firstAttribute="trailing" secondItem="DAC-bv-abc" secondAttribute="trailing" constant="8" id="Px0-Lj-5tv"/>
+                <constraint firstItem="DAC-bv-abc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="R9p-zr-sLO"/>
+                <constraint firstItem="gcP-b3-QMJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="40" id="Rww-lM-FYb"/>
+                <constraint firstItem="McI-ie-YND" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="bJr-Dr-Kls"/>
+                <constraint firstItem="gcP-b3-QMJ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.7" id="nJd-mu-TUJ"/>
+                <constraint firstAttribute="trailing" secondItem="McI-ie-YND" secondAttribute="trailing" constant="8" id="pqf-Z7-n8U"/>
+            </constraints>
+            <point key="canvasLocation" x="278" y="275"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="nothing1" width="150" height="125"/>
+    </resources>
+</document>
