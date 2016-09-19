@@ -32,8 +32,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *helpButton;
 @property (weak, nonatomic) IBOutlet UIButton *contactButton;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
-@property (weak, nonatomic) IBOutlet UISwitch *cellularSwitch;
 @property (weak, nonatomic) IBOutlet UIImageView *facebookLogo;
+@property (weak, nonatomic) IBOutlet UIView *pushNotificationsView;
 
 - (IBAction)closeSettings:(id)sender;
 - (IBAction)helpAndSupport:(id)sender;
@@ -41,7 +41,7 @@
 - (IBAction)facebookLogin:(id)sender;
 - (IBAction)triggerInfoLabel:(id)sender;
 - (IBAction)activatePremium:(id)sender;
-- (IBAction)switchCellular:(UISwitch *)sender;
+- (IBAction)allowPushNotifications:(id)sender;
 
 @end
 
@@ -66,6 +66,13 @@
 {
     [super viewWillAppear:animated];
     self.premiumButton.active = [[PremiumManager sharedManager] premiumStatus];
+    
+    //post a notification that the app became active
+    UIUserNotificationSettings *grantedSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
+    if (grantedSettings.types != UIUserNotificationTypeNone)
+    {
+        self.pushNotificationsView.hidden = true;
+    }
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -115,7 +122,8 @@
     }
 }
 
-- (IBAction)switchCellular:(UISwitch *)sender {
+- (IBAction)allowPushNotifications:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
 }
 
 #pragma mark - LoginManagerDelegate

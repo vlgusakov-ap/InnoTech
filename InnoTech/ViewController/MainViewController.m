@@ -162,7 +162,7 @@
     if ([dao.currentSection isEqualToString:@"featured"] ||
         [dao.currentSection isEqualToString:@"favorites"]) {
         SettingsViewController *settingsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsVC"];
-        [self.navigationController presentViewController:settingsVC animated:YES completion:nil];
+        [self presentViewController:settingsVC animated:YES completion:nil];
     }
     //    else {
     //        RefineViewController *refineVC = [self.mainViewController.storyboard instantiateViewControllerWithIdentifier:@"refineVC"];

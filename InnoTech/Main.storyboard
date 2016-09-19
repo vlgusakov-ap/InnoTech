@@ -322,42 +322,29 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Mw-65-CvW">
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3S-ye-9qD">
-                                        <subviews>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m1L-ZA-BcI">
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="49" id="D3W-go-eSc"/>
-                                                    <constraint firstAttribute="height" constant="31" id="vpm-L2-ue9"/>
-                                                </constraints>
-                                                <connections>
-                                                    <action selector="switchCellular:" destination="ngJ-aE-ZGv" eventType="valueChanged" id="Y3o-m3-nLF"/>
-                                                </connections>
-                                            </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Cellular Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3P-HM-VpW">
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="0mD-ZW-DCx"/>
-                                                    <constraint firstAttribute="width" constant="134" id="qp6-zo-H8D"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5r-1s-bOB">
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Allow push notifications">
+                                            <color key="titleColor" red="0.86307673429319376" green="0.098025413596805555" blue="0.027000156442890815" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="allowPushNotifications:" destination="ngJ-aE-ZGv" eventType="touchUpInside" id="jQ0-Ao-Luk"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notification-light" translatesAutoresizingMaskIntoConstraints="NO" id="QwH-Ft-3Lj">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="39" id="1z7-CO-ffW"/>
-                                            <constraint firstAttribute="width" constant="221" id="HI3-Zn-to1"/>
-                                            <constraint firstAttribute="trailing" secondItem="m1L-ZA-BcI" secondAttribute="trailing" constant="20" id="UdF-ZQ-ju9"/>
-                                            <constraint firstItem="o3P-HM-VpW" firstAttribute="centerY" secondItem="U3S-ye-9qD" secondAttribute="centerY" id="WKu-E3-DMK"/>
-                                            <constraint firstItem="o3P-HM-VpW" firstAttribute="leading" secondItem="U3S-ye-9qD" secondAttribute="leading" id="jw3-pd-Igi"/>
-                                            <constraint firstItem="m1L-ZA-BcI" firstAttribute="centerY" secondItem="U3S-ye-9qD" secondAttribute="centerY" id="t2r-xd-qlP"/>
+                                            <constraint firstAttribute="height" constant="30" id="JVp-pP-ua1"/>
+                                            <constraint firstAttribute="width" constant="30" id="WMb-zc-9lL"/>
                                         </constraints>
-                                    </view>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96862751245498657" green="0.9686274528503418" blue="0.9686274528503418" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="U3S-ye-9qD" firstAttribute="centerX" secondItem="8Mw-65-CvW" secondAttribute="centerX" id="Fqj-4W-wRR"/>
+                                    <constraint firstItem="X5r-1s-bOB" firstAttribute="centerY" secondItem="8Mw-65-CvW" secondAttribute="centerY" id="44X-p8-dpT"/>
+                                    <constraint firstItem="QwH-Ft-3Lj" firstAttribute="centerY" secondItem="8Mw-65-CvW" secondAttribute="centerY" id="6Ns-2N-Lem"/>
+                                    <constraint firstItem="X5r-1s-bOB" firstAttribute="centerX" secondItem="8Mw-65-CvW" secondAttribute="centerX" constant="20" id="DXr-Mo-eVr"/>
                                     <constraint firstAttribute="height" constant="39" id="cyi-DF-FY4"/>
-                                    <constraint firstItem="U3S-ye-9qD" firstAttribute="centerY" secondItem="8Mw-65-CvW" secondAttribute="centerY" id="fLD-il-6cb"/>
+                                    <constraint firstItem="X5r-1s-bOB" firstAttribute="leading" secondItem="QwH-Ft-3Lj" secondAttribute="trailing" constant="8" id="vod-qD-tOH"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJf-aE-TWc">
@@ -592,13 +579,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cellularSwitch" destination="m1L-ZA-BcI" id="okc-2F-iV6"/>
                         <outlet property="contactButton" destination="XYd-aV-7LT" id="E5j-eG-oFH"/>
                         <outlet property="facebookButton" destination="STc-sU-138" id="GRg-6D-aLn"/>
                         <outlet property="facebookLogo" destination="2gb-Uk-Szl" id="Dxa-7D-Xg4"/>
                         <outlet property="helpButton" destination="8Bz-GN-1oD" id="PFc-VS-yIU"/>
                         <outlet property="infoLabel" destination="nr8-Ua-uuT" id="hTD-OY-pVK"/>
                         <outlet property="premiumButton" destination="ekE-6T-KPL" id="oa9-lb-tX0"/>
+                        <outlet property="pushNotificationsView" destination="8Mw-65-CvW" id="LkF-23-JQv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcA-t7-sQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1366,6 +1353,7 @@
         <image name="loading.gif" width="787" height="392"/>
         <image name="menu" width="96" height="96"/>
         <image name="more" width="48" height="48"/>
+        <image name="notification-light" width="50" height="50"/>
         <image name="origami.jpg" width="800" height="881"/>
         <image name="red1" width="602" height="86"/>
         <image name="refresh" width="48" height="48"/>

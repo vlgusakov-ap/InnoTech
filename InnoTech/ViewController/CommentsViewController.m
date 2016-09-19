@@ -194,7 +194,7 @@
             UIAlertAction *openSettings = [UIAlertAction actionWithTitle:@"Open Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 SettingsViewController *settingsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsVC"];
                 dao.toNewMsg = true;
-                [self.navigationController presentViewController:settingsVC animated:YES completion:nil];
+                [self presentViewController:settingsVC animated:YES completion:nil];
             }];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
             [alertController addAction:openSettings];
