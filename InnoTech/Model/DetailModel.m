@@ -10,7 +10,6 @@
 #import "DetailViewController.h"
 #import "Reachability.h"
 #import "MyManager.h"
-#import "MBProgressHUD.h"
 #import "PremiumManager.h"
 
 @class DetailViewController;
@@ -27,7 +26,6 @@
 @implementation DetailModel
 {
     NSInteger webViewLoads;
-    MBProgressHUD *hud;
 }
 
 - (instancetype) initWithViewController: (UIViewController *) viewController {
@@ -44,12 +42,6 @@
 - (void) webViewDidStartLoad:(UIWebView *)webView {
     webViewLoads += 1;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    if (hud == nil)
-    {
-        hud = [MBProgressHUD showHUDAddedTo:self.detailViewController.view animated:YES];
-        hud.label.text = NSLocalizedString(@"Loading...", @"HUD loading title");
-
-    }
 }
 
 - (void) webViewDidFinishLoad:(UIWebView *)webView {
@@ -57,7 +49,6 @@
     
     if (webViewLoads==0)
     {
-        [hud hideAnimated:YES];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         if ([[PremiumManager sharedManager] premiumStatus] == Active) {
             [self cacheCurrentObject];
@@ -68,7 +59,10 @@
 
 - (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     NSLog(@"Error: %@", error.localizedDescription);
-    [self showNoInternetView];
+    if (error.code == NSURLErrorCancelled) return; // this is Error -999
+    if (error.code == NSURLErrorTimedOut) {
+        [self showNoInternetView];
+    }
 }
 
 - (void) showNoInternetView {
@@ -87,7 +81,7 @@
 - (BOOL) reachable {
     
     BOOL isOnline =  ([[Reachability reachabilityWithHostName:[NSURL URLWithString:self.detailViewController.link].host] currentReachabilityStatus] != NotReachable);
-    BOOL isPremiumActive = ([[MyManager sharedManager] premiumStatus] == Active);
+    BOOL isPremiumActive = ([[PremiumManager sharedManager] premiumStatus] == Active);
     BOOL isCurrentProductCached = dao.currentProduct.cached;
     return (isOnline || (isPremiumActive && isCurrentProductCached));
 }
@@ -105,7 +99,7 @@
 
 - (UIViewController *) moreOptions {
     
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"More Options" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"" message:@"More Options" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *openSafariAction = [UIAlertAction actionWithTitle:@"Open in Safari" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [[UIApplication sharedApplication] openURL: self.url];
@@ -119,26 +113,6 @@
     return controller;
 }
 
-- (void) configureVC {
-    
-    dao = [MyManager sharedManager];
-    self.detailViewController.webView.delegate = self;
-    
-    NSLog(@"LINK: %@", self.detailViewController.link);
-    self.detailViewController.request = [NSURLRequest requestWithURL:self.url cachePolicy:NSURLRequestReloadIgnoringCacheData  timeoutInterval: 5];
-//    NSURLRequestReturnCacheDataElseLoad
-    
-    if ([self reachable]) {
-        
-        NSLog(@"IS REACHABILE");
-        [self.detailViewController.webView loadRequest: self.detailViewController.request];
-        
-    } else {
-        
-        NSLog(@"NOT REACHABLE");
-        [self showNoInternetView];
-    }
 
-}
 
 @end

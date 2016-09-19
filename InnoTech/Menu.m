@@ -21,9 +21,11 @@
     NSArray *categories;
 }
 
--(instancetype) init {
+-(instancetype) init
+{
     self = [super init];
-    if (self) {
+    if (self)
+    {
         
         NSString *main = kMenuItemMain;
         categories = @[
@@ -47,7 +49,6 @@
                                                      @"about",
                                                      @"contact us"]];
     }
-    
     return self;
 }
 

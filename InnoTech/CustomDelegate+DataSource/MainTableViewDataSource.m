@@ -38,9 +38,7 @@ typedef NS_ENUM (NSUInteger, EditAction) {
     self = [super init];
     if (self) {
         dao = [MyManager sharedManager];
-        self.tableView = tableView;
-//        self.ad = [[AdMob alloc] initWithViewController:viewController];
-        
+        self.tableView = tableView;        
     }
     return self;
 }

@@ -12,8 +12,6 @@
 
 - (instancetype) initWithViewController: (UIViewController *) viewController;
 
-- (void) configureVC;
-
 - (BOOL) reachable;
 - (void) showNoInternetView;
 - (void) cacheCurrentObject;

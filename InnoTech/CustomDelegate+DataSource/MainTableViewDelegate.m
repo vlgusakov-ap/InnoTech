@@ -19,44 +19,34 @@ typedef NS_ENUM (NSUInteger, EditAction) {
     MyManager   *dao;
 }
 
-- (instancetype) initWithTableView: (UITableView *) tableView {
+- (instancetype) initWithTableView: (UITableView *) tableView
+{
     self = [super init];
-    if (self) {
+    if (self)
+    {
         dao = [MyManager sharedManager];
         self.tableView = tableView;
-        
     }
     return self;
 }
 
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    if (indexPath.row == 0) {
-//        return kAdHeight;
-//    }
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return kProductHeight;
 }
 
--(BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    if (indexPath.row == 0) {
-//        return NO;
-//    }
+-(BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return YES;
-    
 }
 
--(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    if (indexPath.row == 0) {
-//        return @[];
-//    }
-    
+-(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return [self getEditActionsForIndexPath:indexPath];
 }
 
-- (NSArray *) getEditActionsForIndexPath: (NSIndexPath *) indexPath {
-    
+- (NSArray *) getEditActionsForIndexPath: (NSIndexPath *) indexPath
+{
     UITableViewRowAction *addToFavorites;
     
     if (![dao.productsDict[kFavorites] containsObject:[self products][indexPath.row]]) { //-1
@@ -74,14 +64,18 @@ typedef NS_ENUM (NSUInteger, EditAction) {
     return @[addToFavorites];
 }
 
-- (void) commitAction: (EditAction) action forRowAtIndexPath: (NSIndexPath *) indexPath {
-    
-    if (action == AddToFavorites) {
+- (void) commitAction: (EditAction) action forRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    if (action == AddToFavorites)
+    {
         [dao.productsDict[kFavorites] addObject:[self products][indexPath.row]]; //-1
-    } else
-        if (action == DeleteFromFavorites) {
+    }
+    else
+        if (action == DeleteFromFavorites)
+        {
             [dao.productsDict[kFavorites] removeObject:[self products][indexPath.row]]; //-1
-            if ([dao.currentSection isEqualToString:kFavorites]) {
+            if ([dao.currentSection isEqualToString:kFavorites])
+            {
                 [self.delegate tableViewAction:Delete atIndex:indexPath.row];
             }
         }
@@ -89,7 +83,8 @@ typedef NS_ENUM (NSUInteger, EditAction) {
     NSArray *favorites = [dao.productsDict[kFavorites] copy];
     NSMutableArray *archiveArray = [NSMutableArray arrayWithCapacity:favorites.count];
     
-    for (Product *product in favorites) {
+    for (Product *product in favorites)
+    {
         NSData *productEncodedObj = [NSKeyedArchiver archivedDataWithRootObject:product];
         [archiveArray addObject:productEncodedObj];
     }
@@ -98,18 +93,15 @@ typedef NS_ENUM (NSUInteger, EditAction) {
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self.tableView setEditing:false animated:true];
-    if (![dao.currentSection isEqualToString:kFavorites]) {
+    if (![dao.currentSection isEqualToString:kFavorites])
+    {
         [self.delegate updateTableViewAtIndex:indexPath.row];
-        //        [self.delegate tableViewAction:Update atIndex:indexPath.row];
     }
-    
 }
 
-- (NSArray *) products {
-    
+- (NSArray *) products
+{
     return dao.productsDict[dao.currentSection];
 }
-
-
 
 @end

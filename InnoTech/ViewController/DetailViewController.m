@@ -10,7 +10,6 @@
 #import "MyManager.h"
 #import "RNCachingURLProtocol.h"
 #import "NSString+Sha1.h"
-//#import "Reachability.h"
 #import "DetailModel.h"
 @import Social;
 
@@ -30,13 +29,14 @@
 
 @implementation DetailViewController
 
+#pragma mark - ViewController Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.model = [[DetailModel alloc] initWithViewController:self];
 
-    [self.model configureVC];
+    [self configureVC];
     dao = [MyManager sharedManager];
 }
 
@@ -49,14 +49,42 @@
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.webView stopLoading];
     [self.navigationController setToolbarHidden:YES];
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [self.webView stopLoading];
 }
 
 - (void) viewDidLayoutSubviews {
     self.webView.frame = self.view.bounds;
 }
 
+- (void) configureVC {
+    
+    dao = [MyManager sharedManager];
+    self.webView.delegate = self.model;
+    
+    NSLog(@"LINK: %@", self.link);
+    
+    NSString *encodedString= [self.link stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    url = [NSURL URLWithString:encodedString];
+//    self.request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData  timeoutInterval: 5];
+    self.request = [NSURLRequest requestWithURL:url];
+    //    NSURLRequestReturnCacheDataElseLoad
+    
+    if ([self.model reachable]) {
+        
+        NSLog(@"IS REACHABILE");
+        [self.webView loadRequest: self.request];
+        
+    } else {
+        NSLog(@"NOT REACHABLE");
+        [self.model showNoInternetView];
+    }
+    
+}
 - (IBAction)moreOptions:(id)sender {
     
     [self presentViewController:[self.model moreOptions] animated:true completion:nil];

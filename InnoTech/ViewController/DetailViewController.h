@@ -10,7 +10,7 @@
 
 @interface DetailViewController: UIViewController <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-@property (weak, nonatomic) NSString *link;
+@property (strong, nonatomic) NSString *link;
 @property (nonatomic) NSUInteger selectedRow;
 @property (strong, nonatomic) NSURLRequest *request;
 
