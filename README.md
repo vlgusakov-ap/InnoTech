@@ -43,4 +43,4 @@ $ pod install
 
 ## License
 
-InnoTech is released under the MIT license. See LICENSE for details.
+InnoTech is released under the GNU GENERAL PUBLIC LICENSE. See LICENSE for details.
