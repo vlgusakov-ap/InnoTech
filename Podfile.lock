@@ -125,11 +125,11 @@ PODS:
     - SDWebImage/Core
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.0)
+  - AFNetworking
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
-  - Firebase (>= 2.5.1)
+  - Firebase
   - Firebase/AdMob
   - Firebase/Auth
   - Firebase/Crash
@@ -167,6 +167,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: b3b1858f76a6402e2083cf735c45e1e2798b0119
+PODFILE CHECKSUM: b2db97888fd710388a29ef1f8a266c2b6bd3e7f4
 
 COCOAPODS: 1.0.1

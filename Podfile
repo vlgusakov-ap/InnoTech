@@ -8,13 +8,13 @@ target 'InnoTech' do
   # Pods for InnoTech
 	source 'https://github.com/CocoaPods/Specs.git'
 
-	pod 'AFNetworking', '~> 3.0'
+	pod 'AFNetworking'
 	pod 'Helpshift'
 	pod 'FBSDKCoreKit'
 	pod 'FBSDKLoginKit'
 	pod 'FBSDKShareKit'
 	pod 'SDWebImage/WebP'
-	pod 'Firebase', '>= 2.5.1'
+	pod 'Firebase'
 	pod 'Firebase/Database'
 	pod 'Firebase/Crash'
 	pod 'Firebase/AdMob'
