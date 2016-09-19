@@ -9,16 +9,16 @@ target 'InnoTech' do
 	source 'https://github.com/CocoaPods/Specs.git'
 
 	pod 'AFNetworking', '~> 3.0'
-	pod 'Helpshift', '5.5.1'
-	pod "FBSDKCoreKit";
-	pod "FBSDKLoginKit";
-	pod "FBSDKShareKit";
+	pod 'Helpshift'
+	pod 'FBSDKCoreKit'
+	pod 'FBSDKLoginKit'
+	pod 'FBSDKShareKit'
 	pod 'SDWebImage/WebP'
 	pod 'Firebase', '>= 2.5.1'
 	pod 'Firebase/Database'
 	pod 'Firebase/Crash'
 	pod 'Firebase/AdMob'
-	pod ‘Firebase/Auth’	
+	pod 'Firebase/Auth'	
 	pod 'Firebase/RemoteConfig'
 	pod 'Firebase/Messaging'
 	pod 'Firebase/AdMob'

@@ -47,7 +47,8 @@
 
 @implementation SettingsViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     dao = [MyManager sharedManager];
@@ -60,6 +61,12 @@
     self.infoLabel.hidden = true;
     
     self.facebookLogo.hidden = [dao isIphone5Screen];
+    
+    //notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appDidBecomeActive:)
+                                                 name:@"applicationDidBecomeActive"
+                                               object:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -73,9 +80,14 @@
     {
         self.pushNotificationsView.hidden = true;
     }
+    else
+    {
+        self.pushNotificationsView.hidden = false;
+    }
 }
 
-- (void) viewDidDisappear:(BOOL)animated {
+- (void) viewDidDisappear:(BOOL)animated
+{
     [super viewDidDisappear:animated];
     dao.toNewMsg = false;
 }
@@ -84,27 +96,35 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)helpAndSupport:(id)sender {
+- (IBAction)helpAndSupport:(id)sender
+{
     
     NSString *identifier = [[[FIRAuth auth] currentUser] uid];
     NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:kFacebookName];
     NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:kFacebookEmail];
     
-    [HelpshiftSupport setUserIdentifier:identifier];
-    [HelpshiftCore setName:name andEmail:email];
+    if (identifier)
+    {
+        [HelpshiftSupport setUserIdentifier:identifier];
+        [HelpshiftCore setName:name andEmail:email];
+    }
+
     [HelpshiftSupport showFAQs:self withOptions:nil];
 }
 
-- (IBAction)contact:(id)sender {
+- (IBAction)contact:(id)sender
+{
     
     ConfiguredMailComposeViewController *mailVC = [ConfiguredMailComposeViewController new];
 
-    if ([mailVC canOpenMail]) {
+    if ([mailVC canOpenMail])
+    {
         [self presentViewController:mailVC animated:YES completion:nil];
     }
 }
 
-- (IBAction)facebookLogin:(id)sender {
+- (IBAction)facebookLogin:(id)sender
+{
     [[LoginManager sharedManager] loginWithFacebook:self];
 }
 
@@ -126,10 +146,37 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
 }
 
+- (void) appDidBecomeActive:(NSNotification *) notification
+{
+    // [notification name] should always be @"TestNotification"
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    if ([[notification name] isEqualToString:@"applicationDidBecomeActive"])
+    {
+        UIUserNotificationSettings *grantedSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
+        if (grantedSettings.types != UIUserNotificationTypeNone)
+        {
+            self.pushNotificationsView.hidden = true;
+        }
+        else
+        {
+            self.pushNotificationsView.hidden = false;
+        }
+    }
+}
+
 #pragma mark - LoginManagerDelegate
 
 - (void) loginManagerDidPerformFacebookAction:(FacebookAction)action
 {
     self.facebookButton.connected = action;
 }
+
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end

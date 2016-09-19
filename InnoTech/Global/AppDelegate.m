@@ -156,6 +156,10 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     [self connectToFcm];
     [FBSDKAppEvents activateApp];
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"applicationDidBecomeActive"
+     object:self];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
