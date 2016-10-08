@@ -64,10 +64,14 @@
         self.logo = [[UIImageView alloc] initWithFrame:self.tableView.tableHeaderView.bounds];
         self.logo.image = [UIImage imageNamed:@"logo"];
         
-        if(![self.logo isDescendantOfView:self.tableView.tableHeaderView])
+        if(![[AdMob sharedInstance] receivedAd])
         {
             // The childView is contained in the parentView.
             [self.tableView.tableHeaderView addSubview:self.logo];
+        }
+        else
+        {
+            self.logo.hidden = YES;
         }
         
     }

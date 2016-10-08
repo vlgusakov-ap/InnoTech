@@ -379,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				21ABFFE11DA1F468008A337D /* Base ViewControllers */,
+				21B5CDF51D8F785E00E8ADCF /* TableViewControllers */,
 				2161FEC41D394CA7009A51F2 /* AboutViewController.h */,
 				2161FEC51D394CA7009A51F2 /* AboutViewController.m */,
 				2161FEC61D394CA7009A51F2 /* CommentsViewController.h */,
@@ -387,7 +388,6 @@
 				2161FEC91D394CA7009A51F2 /* ConfiguredMailComposeViewController.m */,
 				2161FECA1D394CA7009A51F2 /* DetailViewController.h */,
 				2161FECB1D394CA7009A51F2 /* DetailViewController.m */,
-				21B5CDF51D8F785E00E8ADCF /* TableViewControllers */,
 				2161FECE1D394CA7009A51F2 /* MenuViewController.h */,
 				2161FECF1D394CA7009A51F2 /* MenuViewController.m */,
 				2161FED01D394CA7009A51F2 /* NewCommentViewController.h */,
@@ -876,6 +876,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -923,6 +924,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

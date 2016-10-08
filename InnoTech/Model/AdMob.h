@@ -18,6 +18,7 @@
 
 @interface AdMob : NSObject <GADNativeExpressAdViewDelegate>
 
+@property (nonatomic, assign) BOOL receivedAd;
 + (id) sharedInstance;
 
 - (void) configureViewController: (UIViewController*) viewController;

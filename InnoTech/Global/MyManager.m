@@ -52,7 +52,8 @@
         
         self.productsDict[kFavorites] = [NSMutableArray new];
         NSArray *favorites = [[NSUserDefaults standardUserDefaults] objectForKey:kFavorites];
-        for (NSData *data in favorites) {
+        for (NSData *data in favorites)
+        {
             Product *product = [NSKeyedUnarchiver unarchiveObjectWithData:data];
             [self.productsDict[kFavorites] addObject:product];
         }

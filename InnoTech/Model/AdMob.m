@@ -61,6 +61,7 @@
 - (void) nativeExpressAdViewDidReceiveAd:(GADNativeExpressAdView *)nativeExpressAdView
 {
     NSLog(@"AD RECEIVED");
+    self.receivedAd = YES;
     [self.delegate displayAd:true];
 }
 - (void)nativeExpressAdView:(GADNativeExpressAdView *)nativeExpressAdView
