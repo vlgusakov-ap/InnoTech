@@ -174,7 +174,19 @@
 - (void) initGlobalUI {
     
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    UIColor *navBarColor = [UIColor colorWithRed:28./255. green:28./255. blue:28./255. alpha:1];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBarTintColor:navBarColor];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    [[UINavigationBar appearance] setTranslucent:NO];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor whiteColor]];
+    [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor whiteColor]];
+    
+    UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, 20)];
+    view.backgroundColor = navBarColor;
+    [self.window.rootViewController.view addSubview:view];
+    
     //    [[UILabel appearance] setFont:[UIFont fontWithName:@"Avenir Next" size:17.0]];
 }
 

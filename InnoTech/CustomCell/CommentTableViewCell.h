@@ -11,7 +11,9 @@
 @interface CommentTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *personPicture;
-@property (weak, nonatomic) IBOutlet UITextView *commentTextView;
+@property (weak, nonatomic) IBOutlet UILabel *commentTextView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *crownImageView;
+@property (weak, nonatomic) IBOutlet UILabel *commentTime;
 
 @end

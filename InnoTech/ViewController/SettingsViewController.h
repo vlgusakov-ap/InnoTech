@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseModalViewController.h"
 
-@interface SettingsViewController : UIViewController 
+@interface SettingsViewController : BaseModalViewController 
 
 @end

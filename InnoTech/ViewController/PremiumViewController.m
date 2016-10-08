@@ -38,6 +38,7 @@
     
 //    self.upgradeButton.hidden = ([[MyManager sharedManager] premiumStatus] == Active);
 
+
 }
 
 -(void) setMenuVC {

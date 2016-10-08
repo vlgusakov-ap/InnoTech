@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface NewCommentViewController : UIViewController
+@interface NewCommentViewController : BaseViewController
 
 @end

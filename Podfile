@@ -9,7 +9,7 @@ target 'InnoTech' do
 	source 'https://github.com/CocoaPods/Specs.git'
 
 	pod 'AFNetworking'
-	pod 'Helpshift'
+	pod 'Helpshift', '5.8.0-bitcode'
 	pod 'FBSDKCoreKit'
 	pod 'FBSDKLoginKit'
 	pod 'FBSDKShareKit'

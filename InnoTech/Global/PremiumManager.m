@@ -51,9 +51,16 @@ NSString* const kPremiumStatus = @"premiumStatus";
         [IAPShare sharedHelper].iap = [[IAPHelper alloc] initWithProductIdentifiers:dataSet];
     }
     
-#warning Change to production
-    [IAPShare sharedHelper].iap.production = NO;
-    
+//    BOOL isProduction;
+//#if DEBUG
+//    isProduction = NO;
+//#else
+//    isProduction = YES;
+//#endif
+    [IAPShare sharedHelper].iap.production = YES;
+
+    NSLog(@"%@",[IAPShare sharedHelper].iap.purchasedProducts);
+
     if ([[IAPShare sharedHelper].iap isPurchasedProductsIdentifier:kiTunesPremiumProductID])
     {
         [self enablePremium:YES];

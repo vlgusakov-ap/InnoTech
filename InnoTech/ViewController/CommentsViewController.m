@@ -19,8 +19,9 @@
     MyManager *dao;
     LoginManager *login;
 }
+@property (strong,nonatomic) UIViewController *modal;
+
 - (IBAction)openNewMsg:(id)sender;
-@property (weak, nonatomic) UITableView *tableViewRef;
 
 @end
 
@@ -30,6 +31,10 @@
     [super viewDidLoad];
     dao.toNewMsg = false;
     login = [LoginManager new];
+    self.tableView.estimatedRowHeight = 80.0f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -39,6 +44,7 @@
     if (dao.toNewMsg == false  && dao.currentComments.count == 0) {
         [dao addListenerToProductWithKey:dao.currentProduct.key];
     }
+    [self.tableView reloadData];
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -122,53 +128,27 @@
     
     // Configure the cell...
 //    NSLog(@"%@", dao.currentComments[indexPath.row]);
-    NSString *name = [dao.currentComments[indexPath.row] objectForKey:@"name"];
-    NSString *comment = [dao.currentComments[indexPath.row] objectForKey:@"comment"];
+    NSDictionary *chatData = dao.currentComments[indexPath.row];
+    NSString *name = [chatData objectForKey:@"name"];
+    NSString *comment = [chatData objectForKey:@"comment"];
     cell.commentTextView.text = comment;
-    NSString *imgStr = [dao.currentComments[indexPath.row] objectForKey:@"img"];
+    NSString *imgStr = [chatData objectForKey:@"img"];
     NSURL *imgUrl = [NSURL URLWithString:imgStr];
+    BOOL isPremium = [[chatData objectForKey:kCommentPremiumStatus] boolValue];
     cell.nameLabel.text = name;
     [cell.personPicture sd_setImageWithURL:imgUrl];
-    cell.personPicture.layer.cornerRadius = 36.75;
+    cell.personPicture.layer.cornerRadius = CGRectGetWidth(cell.personPicture.bounds)/2.0f;
     cell.personPicture.clipsToBounds = true;
+    cell.crownImageView.image = (isPremium) ? [UIImage imageNamed:@"crown.png"] : nil;
+    cell.commentTime.text = [MyManager chatTimeFormat:[[chatData objectForKey:kCommentTimestamp] longValue]];
+    
+    cell.separatorInset = UIEdgeInsetsZero;
+    cell.layoutMargins = UIEdgeInsetsZero;
+    cell.preservesSuperviewLayoutMargins = NO;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 
@@ -207,7 +187,7 @@
         else {
             
             [self performSegueWithIdentifier:@"newMsg" sender:self];
-            
+//            [self showNewComment];
         }
     } else {
         
@@ -219,4 +199,32 @@
         
     }
 }
+
+//- (void) showNewComment
+//{
+//    if (self.childViewControllers.count == 0)
+//    {
+//        self.modal = [self.storyboard instantiateViewControllerWithIdentifier:@"newComment"];
+//
+//        [self addChildViewController:self.modal];
+//        self.modal.view.frame = CGRectMake(0, 568, 320, 284);
+//        [self.view addSubview:self.modal.view];
+//        [UIView animateWithDuration:1 animations:^{
+//            self.modal.view.frame = CGRectMake(0, 284, 320, 284);;
+//        } completion:^(BOOL finished) {
+//            [self.modal didMoveToParentViewController:self];
+//        }];
+//    }
+//    else
+//    {
+//        [UIView animateWithDuration:1 animations:^{
+//            self.modal.view.frame = CGRectMake(0, 568, 320, 284);
+//        } completion:^(BOOL finished) {
+//            [self.modal.view removeFromSuperview];
+//            [self.modal removeFromParentViewController];
+//            self.modal = nil;
+//        }];
+//    }
+//
+//}
 @end

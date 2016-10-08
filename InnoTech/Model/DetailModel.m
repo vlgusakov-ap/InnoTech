@@ -99,7 +99,7 @@
 
 - (UIViewController *) moreOptions {
     
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"" message:@"More Options" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:@"More Options" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *openSafariAction = [UIAlertAction actionWithTitle:@"Open in Safari" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [[UIApplication sharedApplication] openURL: self.url];

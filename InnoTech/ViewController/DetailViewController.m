@@ -55,6 +55,7 @@
 - (void) viewDidDisappear:(BOOL)animated
 {
     [self.webView stopLoading];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void) viewDidLayoutSubviews {

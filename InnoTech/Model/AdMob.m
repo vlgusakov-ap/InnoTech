@@ -7,6 +7,8 @@
 //
 
 #import "AdMob.h"
+#import "Constants.h"
+#import "SizeUtils.h"
 
 @interface AdMob() 
 
@@ -30,7 +32,8 @@
 - (instancetype) init {
     self = [super init];
     if (self) {
-        self.nativeExpressAdView = [[GADNativeExpressAdView alloc] initWithAdSize:GADAdSizeFromCGSize(CGSizeMake(0, 100))];
+        CGFloat adHeight = kAdHeightSmall;//[SizeUtils isIphone5] ? kAdHeightSmall : kAdHeightRegular;
+        self.nativeExpressAdView = [[GADNativeExpressAdView alloc] initWithAdSize:GADAdSizeFromCGSize(CGSizeMake(0, adHeight))];
         self.nativeExpressAdView.adUnitID = kAdUnitID;
         self.nativeExpressAdView.delegate = self;
         

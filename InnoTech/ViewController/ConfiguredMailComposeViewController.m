@@ -18,15 +18,24 @@
     self = [super init];
     if (self) {
         [self setToRecipients:@[@"InnoTech Support<support@nycappstudio.com>"]];
-        NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:@"fbName"];
-        NSString *subject = [NSString stringWithFormat:@"Innotech Support | %@", name != nil ? name : @"Hello!"];
+        
+        NSDate *now = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterShortStyle];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
+        [formatter setTimeZone:[NSTimeZone localTimeZone]];
+        NSLog(@"%@",[formatter stringFromDate:now]); //--> 9/9/11 11:54 PM
+        
+        NSString *subject = [NSString stringWithFormat:@"InnoTech Support"];
         [self setSubject:subject];
         [self setMessageBody:@"Hello InnoTech,\n\n" isHTML:NO];
+        
+        self.navigationBar.tintColor = [UIColor whiteColor];
     }
     return self;
 }
 
-- (BOOL) canOpenMail {
+- (BOOL)canOpenMail {
     
     if (![MFMailComposeViewController canSendMail]) {
         NSLog(@"Mail services are not available.");
@@ -45,5 +54,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 @end

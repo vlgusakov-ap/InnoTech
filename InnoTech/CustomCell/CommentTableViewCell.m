@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

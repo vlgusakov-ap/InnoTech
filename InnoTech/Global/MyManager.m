@@ -14,6 +14,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 @import FirebaseRemoteConfig;
 #import <sys/sysctl.h>
+#import "PremiumManager.h"
 
 @interface MyManager()
 
@@ -295,11 +296,15 @@
     NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:kFacebookName];
     NSString *img = [[NSUserDefaults standardUserDefaults] objectForKey:kFacebookImage];
     NSString *firebaseUserID = [[[FIRAuth auth] currentUser] uid];
+    
+    PremiumStatus isPremium = [[PremiumManager sharedManager] premiumStatus];
     NSDictionary *comment = @{
                               kCommentName: name,
                               kCommentImage: img,
                               kCommentText: commentToPublish,
-                              kCommentUserID: firebaseUserID
+                              kCommentUserID: firebaseUserID,
+                              kCommentPremiumStatus: @(isPremium),
+                              kCommentTimestamp: @([Constants currentTime])
                               };
     
     NSString *to = [NSString stringWithFormat:@"/%@/%lu/", key, self.currentComments.count];
@@ -336,6 +341,81 @@
     return false;
 }
 
++ (NSString *)chatTimeFormat:(long long)epoch
+{
+    NSDate *now = [NSDate date];
+    NSDate *timestamp = [NSDate dateWithTimeIntervalSince1970:epoch];
+    
+    NSString *dateText = nil;
+    int diff = [now timeIntervalSinceDate:timestamp];
+    
+    if (diff < 0)
+    {
+        diff = 0;
+    }
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSRange days = [cal rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:now];
+    NSInteger secondsInMonth = 0;
+    switch (days.length)
+    {
+        case 28:
+            secondsInMonth = SECONDS_PER_28MONTH;
+            break;
+        case 30:
+            secondsInMonth = SECONDS_PER_30MONTH;
+            break;
+        case 31:
+            secondsInMonth = SECONDS_PER_31MONTH;
+            break;
+        default:
+            break;
+    }
+    
+    BOOL justNow = diff < SECONDS_PER_MINUTE;
+    BOOL minutesAgo = !justNow && diff < SECONDS_PER_HOUR;
+    BOOL hoursAgo = !minutesAgo && diff < SECONDS_PER_DAY;
+    BOOL daysAgo = !hoursAgo && (diff > SECONDS_PER_DAY && diff < SECONDS_PER_WEEK);
+    BOOL weeksAgo = !daysAgo && (diff > SECONDS_PER_WEEK && diff < secondsInMonth);
+    
+    if (justNow)
+    {
+        dateText = @"JUST NOW";
+    }
+    else if (minutesAgo)
+    {
+        NSInteger minutes = diff / SECONDS_PER_MINUTE;
+        NSString *minString = (minutes == 1) ? @"minute" : @"minutes";
+        dateText = [NSString stringWithFormat:@"%ld %@ ago", minutes, minString];
+    }
+    else if (hoursAgo)
+    {
+        NSInteger hours = diff / SECONDS_PER_HOUR;
+        NSString *hoursString = (hours == 1) ? @"hour" : @"hours";
+        dateText = [NSString stringWithFormat:@"%ld %@ ago", hours, hoursString];
+    }
+    else if (daysAgo)
+    {
+        NSInteger days = diff / SECONDS_PER_DAY;
+        NSString *daysString = (days == 1) ? @"day" : @"days";
+        dateText = [NSString stringWithFormat:@"%ld %@ ago", days, daysString];
+    }
+    else if (weeksAgo)
+    {
+        NSInteger weeks = diff / SECONDS_PER_WEEK;
+        NSString *weeksString = (weeks == 1) ? @"week" : @"weeks";
+        dateText = [NSString stringWithFormat:@"%ld %@ ago", weeks, weeksString];
+    }
+    else
+    {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setLocale:[NSLocale currentLocale]];
+        [dateFormatter setDateFormat:@"MMMM dd, yyyy"];
+        
+        dateText = [dateFormatter stringFromDate:timestamp];
+    }
+    
+    return [dateText uppercaseString];
+}
 
 
 - (void)dealloc {

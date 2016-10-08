@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseTableViewController.h"
 
-@interface CommentsViewController : UITableViewController
+@interface CommentsViewController : BaseTableViewController
 
 @end

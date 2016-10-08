@@ -46,8 +46,8 @@
         [self.menuItemsPrivate addObject:main];
         [self.menuItemsPrivate addObjectsFromArray:categories];
         [self.menuItemsPrivate addObjectsFromArray:@[@"premium",
-                                                     @"about",
-                                                     @"contact us"]];
+                                                     @"about"]];
+                                                     //@"contact us"]];
     }
     return self;
 }

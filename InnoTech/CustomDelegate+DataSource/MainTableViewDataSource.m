@@ -58,6 +58,11 @@ typedef NS_ENUM (NSUInteger, EditAction) {
     Product *currCellProduct = dao.productsDict[dao.currentSection][indexPath.row];
     [cell configureForProduct:currCellProduct];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.preservesSuperviewLayoutMargins  = NO;
+    cell.separatorInset = UIEdgeInsetsZero;
+    cell.layoutMargins = UIEdgeInsetsZero;
+    
     return cell;
 }
 

@@ -9,6 +9,7 @@
 #import "MainTableViewDelegate.h"
 #import "Constants.h"
 #import "MyManager.h"
+#import "SizeUtils.h"
 
 typedef NS_ENUM (NSUInteger, EditAction) {
     AddToFavorites = 0,
@@ -32,7 +33,8 @@ typedef NS_ENUM (NSUInteger, EditAction) {
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return kProductHeight;
+    BOOL isIphone5 = [SizeUtils isIphone5];
+    return isIphone5 ? kProductHeightSmall : kProductHeightRegular;
 }
 
 -(BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface CategoryTableViewController : UITableViewController
+#import "BaseTableViewController.h"
+@interface CategoryTableViewController : BaseTableViewController
 
 @end

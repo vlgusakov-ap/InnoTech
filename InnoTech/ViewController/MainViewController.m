@@ -24,10 +24,14 @@
 #import "SWRevealViewController.h"
 #import "SettingsViewController.h"
 
+#import "PremiumManager.h"
+
+
 @interface MainViewController () <MyManagerDelegate, UITableViewDataSource, UITableViewDelegate, AdMobDelegate>
 
 @property (strong, nonatomic) MainTableViewDataSource *mainDataSource;
 @property (strong, nonatomic) MainTableViewDelegate *mainDelegate;
+@property (strong, nonatomic) UIImageView *logo;
 
 @end
 
@@ -49,11 +53,35 @@
     [self configureVC];
     [self configureTableView];
     [self addMenu];
-    [[AdMob sharedInstance] configureViewController:self];
-    self.tableView.tableHeaderView = [[AdMob sharedInstance] getAd];
-    //    [self.tableView.tableHeaderView setFrame:CGRectZero];
-    //    [self displayAd:false];
+    
+    NSDictionary* env = [[NSProcessInfo processInfo] environment];
+    BOOL debugger = [[env valueForKey:@"debugger"] isEqual:@"true"];
+    
+    if (![[PremiumManager sharedManager] premiumStatus] || debugger)
+    {
+        [[AdMob sharedInstance] configureViewController:self];
+        self.tableView.tableHeaderView = [[AdMob sharedInstance] getAd];
+        self.logo = [[UIImageView alloc] initWithFrame:self.tableView.tableHeaderView.bounds];
+        self.logo.image = [UIImage imageNamed:@"logo"];
+        
+        if(![self.logo isDescendantOfView:self.tableView.tableHeaderView])
+        {
+            // The childView is contained in the parentView.
+            [self.tableView.tableHeaderView addSubview:self.logo];
+        }
+        
+    }
+    else
+    {
+        self.tableView.tableHeaderView = nil;
+    }
+}
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.logo removeFromSuperview];
+    self.logo = nil;
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -156,6 +184,8 @@
     
     self.tableView.dataSource = self.mainDataSource;
     self.tableView.delegate =  self.mainDelegate;
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void) rightButtonAction {
@@ -171,12 +201,11 @@
     //    }
 }
 
-- (void) displayAd: (BOOL) display {
+- (void) displayAd: (BOOL)display {
+    [self.logo removeFromSuperview];
+    self.logo = nil;
     GADNativeExpressAdView *adView = (display == YES) ? [[AdMob sharedInstance] getAd] : nil;
     self.tableView.tableHeaderView = adView;
-//    self.tableView.tableHeaderView.frame = CGRectZero;
-//    self.tableView.tableHeaderView.hidden = !display;
-    [self refresh];
 }
 
 - (void) refresh {
@@ -237,6 +266,11 @@
 - (void) disableInteraction: (BOOL) flag {
     self.tableView.scrollEnabled = flag;
     self.tableView.allowsSelection = flag;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 @end

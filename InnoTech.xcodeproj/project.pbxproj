@@ -109,6 +109,12 @@
 		217AFAC61D38462800E02BDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 217AFAC51D38462800E02BDE /* main.m */; };
 		217AFADC1D38465800E02BDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217AFADB1D38465800E02BDE /* Main.storyboard */; };
 		217AFADE1D38468100E02BDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217AFADD1D38468100E02BDE /* LaunchScreen.storyboard */; };
+		21ABFFDA1D98BE83008A337D /* SizeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ABFFD91D98BE83008A337D /* SizeUtils.m */; };
+		21ABFFDD1DA1F426008A337D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ABFFDC1DA1F426008A337D /* BaseViewController.m */; };
+		21ABFFE01DA1F44C008A337D /* BaseModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ABFFDF1DA1F44C008A337D /* BaseModalViewController.m */; };
+		21ABFFE61DA20A3F008A337D /* noads.png in Resources */ = {isa = PBXBuildFile; fileRef = 21ABFFE51DA20A3F008A337D /* noads.png */; };
+		21ABFFE91DA217E9008A337D /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ABFFE81DA217E9008A337D /* Constants.m */; };
+		21ABFFEC1DA22587008A337D /* UIViewController+Addons.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ABFFEB1DA22587008A337D /* UIViewController+Addons.m */; };
 		21B5CDF41D8F764000E8ADCF /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B5CDF31D8F764000E8ADCF /* BaseTableViewController.m */; };
 		21B5CDF81D8F788C00E8ADCF /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B5CDF71D8F788C00E8ADCF /* CategoryTableViewController.m */; };
 		21BF48411D8E2CB600409715 /* PremiumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BF48401D8E2CB600409715 /* PremiumManager.m */; };
@@ -257,6 +263,16 @@
 		217AFAD51D38462800E02BDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		217AFADB1D38465800E02BDE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		217AFADD1D38468100E02BDE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		21ABFFD81D98BE83008A337D /* SizeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SizeUtils.h; path = Global/SizeUtils.h; sourceTree = "<group>"; };
+		21ABFFD91D98BE83008A337D /* SizeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SizeUtils.m; path = Global/SizeUtils.m; sourceTree = "<group>"; };
+		21ABFFDB1DA1F426008A337D /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		21ABFFDC1DA1F426008A337D /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		21ABFFDE1DA1F44C008A337D /* BaseModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModalViewController.h; sourceTree = "<group>"; };
+		21ABFFDF1DA1F44C008A337D /* BaseModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModalViewController.m; sourceTree = "<group>"; };
+		21ABFFE51DA20A3F008A337D /* noads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noads.png; sourceTree = "<group>"; };
+		21ABFFE81DA217E9008A337D /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		21ABFFEA1DA22587008A337D /* UIViewController+Addons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Addons.h"; sourceTree = "<group>"; };
+		21ABFFEB1DA22587008A337D /* UIViewController+Addons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Addons.m"; sourceTree = "<group>"; };
 		21B5CDF21D8F764000E8ADCF /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseTableViewController.h; path = ViewController/BaseTableViewController.h; sourceTree = "<group>"; };
 		21B5CDF31D8F764000E8ADCF /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseTableViewController.m; path = ViewController/BaseTableViewController.m; sourceTree = "<group>"; };
 		21B5CDF61D8F788C00E8ADCF /* CategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewController.h; sourceTree = "<group>"; };
@@ -313,12 +329,16 @@
 				2161FE9E1D394BDB009A51F2 /* AppDelegate.h */,
 				2161FE9F1D394BDB009A51F2 /* AppDelegate.m */,
 				2161FEA01D394BDB009A51F2 /* Constants.h */,
+				21ABFFE81DA217E9008A337D /* Constants.m */,
 				2161FEA21D394BDB009A51F2 /* MyManager.h */,
 				2161FEA31D394BDB009A51F2 /* MyManager.m */,
 				2161FEA41D394BDB009A51F2 /* Reachability.h */,
 				2161FEA51D394BDB009A51F2 /* Reachability.m */,
 				2161FEA61D394BDB009A51F2 /* RNCachingURLProtocol.h */,
 				2161FEA71D394BDB009A51F2 /* RNCachingURLProtocol.m */,
+				21ABFFD81D98BE83008A337D /* SizeUtils.h */,
+				21ABFFD91D98BE83008A337D /* SizeUtils.m */,
+				217AFADB1D38465800E02BDE /* Main.storyboard */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -358,6 +378,7 @@
 		2161FEE21D394CAC009A51F2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				21ABFFE11DA1F468008A337D /* Base ViewControllers */,
 				2161FEC41D394CA7009A51F2 /* AboutViewController.h */,
 				2161FEC51D394CA7009A51F2 /* AboutViewController.m */,
 				2161FEC61D394CA7009A51F2 /* CommentsViewController.h */,
@@ -429,6 +450,8 @@
 				2161FEFD1D394D49009A51F2 /* NSString+Sha1.m */,
 				2161FEFE1D394D49009A51F2 /* NSURLRequest+Extended.h */,
 				2161FEFF1D394D49009A51F2 /* NSURLRequest+Extended.m */,
+				21ABFFEA1DA22587008A337D /* UIViewController+Addons.h */,
+				21ABFFEB1DA22587008A337D /* UIViewController+Addons.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -436,6 +459,7 @@
 		2161FF051D394D60009A51F2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				21ABFFE51DA20A3F008A337D /* noads.png */,
 				215F277D1D3AB5900072513B /* accessories.png */,
 				2161FF061D394D78009A51F2 /* about_1.png */,
 				2161FF071D394D78009A51F2 /* about.png */,
@@ -529,7 +553,6 @@
 				2161FEF51D394D3D009A51F2 /* Categories */,
 				21F4E5C61D8E340500D35835 /* Assets.xcassets */,
 				2161FF051D394D60009A51F2 /* Images */,
-				217AFADB1D38465800E02BDE /* Main.storyboard */,
 				217AFADD1D38468100E02BDE /* LaunchScreen.storyboard */,
 				215F27831D3F11880072513B /* physics.png */,
 				215F27851D3F11BA0072513B /* exterior.png */,
@@ -549,6 +572,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		21ABFFE11DA1F468008A337D /* Base ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				21ABFFDB1DA1F426008A337D /* BaseViewController.h */,
+				21ABFFDC1DA1F426008A337D /* BaseViewController.m */,
+				21B5CDF21D8F764000E8ADCF /* BaseTableViewController.h */,
+				21B5CDF31D8F764000E8ADCF /* BaseTableViewController.m */,
+				21ABFFDE1DA1F44C008A337D /* BaseModalViewController.h */,
+				21ABFFDF1DA1F44C008A337D /* BaseModalViewController.m */,
+			);
+			name = "Base ViewControllers";
+			sourceTree = "<group>";
+		};
 		21B5CDF51D8F785E00E8ADCF /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,8 +592,6 @@
 				2161FECD1D394CA7009A51F2 /* MainViewController.m */,
 				21B5CDF61D8F788C00E8ADCF /* CategoryTableViewController.h */,
 				21B5CDF71D8F788C00E8ADCF /* CategoryTableViewController.m */,
-				21B5CDF21D8F764000E8ADCF /* BaseTableViewController.h */,
-				21B5CDF31D8F764000E8ADCF /* BaseTableViewController.m */,
 			);
 			name = TableViewControllers;
 			sourceTree = "<group>";
@@ -692,6 +726,7 @@
 				2161FF4D1D394D78009A51F2 /* domainc.png in Resources */,
 				2161FF591D394D78009A51F2 /* hair_clip.png in Resources */,
 				2161FF441D394D78009A51F2 /* camera_addon.png in Resources */,
+				21ABFFE61DA20A3F008A337D /* noads.png in Resources */,
 				2161FF6C1D394D78009A51F2 /* safari.png in Resources */,
 				2161FF731D394D78009A51F2 /* www_about_blue.png in Resources */,
 				215F27861D3F11BA0072513B /* exterior.png in Resources */,
@@ -773,6 +808,7 @@
 				2161FEDE1D394CA7009A51F2 /* NewCommentViewController.m in Sources */,
 				2161FEBA1D394C63009A51F2 /* AdMob.m in Sources */,
 				217AFAC61D38462800E02BDE /* main.m in Sources */,
+				21ABFFEC1DA22587008A337D /* UIViewController+Addons.m in Sources */,
 				21B5CDF41D8F764000E8ADCF /* BaseTableViewController.m in Sources */,
 				2161FEF41D394D30009A51F2 /* SWRevealViewController.m in Sources */,
 				2161FF011D394D49009A51F2 /* NSArray+Check.m in Sources */,
@@ -799,14 +835,18 @@
 				215F27901D3F23A80072513B /* NoFavoritesView.m in Sources */,
 				211D9EE81D8E4ED5006FB309 /* ITUser.m in Sources */,
 				2161FEAB1D394BDB009A51F2 /* Reachability.m in Sources */,
+				21ABFFE01DA1F44C008A337D /* BaseModalViewController.m in Sources */,
 				2161FEDF1D394CA7009A51F2 /* PremiumViewController.m in Sources */,
+				21ABFFE91DA217E9008A337D /* Constants.m in Sources */,
 				2161FED81D394CA7009A51F2 /* AboutViewController.m in Sources */,
 				2161FEE11D394CA7009A51F2 /* SettingsViewController.m in Sources */,
+				21ABFFDA1D98BE83008A337D /* SizeUtils.m in Sources */,
 				2161FED91D394CA7009A51F2 /* CommentsViewController.m in Sources */,
 				21BF48411D8E2CB600409715 /* PremiumManager.m in Sources */,
 				2161FEAC1D394BDB009A51F2 /* RNCachingURLProtocol.m in Sources */,
 				2161FEEF1D394D0D009A51F2 /* MainTableViewDataSource.m in Sources */,
 				2161FF001D394D49009A51F2 /* MainTableViewCell+ConfigureForProduct.m in Sources */,
+				21ABFFDD1DA1F426008A337D /* BaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -908,6 +948,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = InnoTech/InnoTech.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${PODS_ROOT}/Firebase/Analytics/Sources",
@@ -944,6 +985,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = InnoTech/InnoTech.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${PODS_ROOT}/Firebase/Analytics/Sources",

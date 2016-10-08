@@ -32,7 +32,12 @@
     
     self.tableView.rowHeight = 40;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tableView.contentInset = UIEdgeInsetsMake(30, 0, 0, 0);
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -58,7 +63,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *identifier;
-    if (indexPath.row < menu.categories_count) {
+    if (indexPath.row <= menu.categories_count) {
         identifier = @"categoriesViewCell";
     }
     else if ([menu.menuItems[indexPath.row] isEqualToString:@"about"]){

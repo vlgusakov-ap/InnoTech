@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface RefineViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface RefineViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *rightButton;
 
 @end

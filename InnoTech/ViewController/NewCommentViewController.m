@@ -9,6 +9,7 @@
 #import "NewCommentViewController.h"
 #import "MyManager.h"
 #import "LoginManager.h"
+#import "UIViewController+Addons.h"
 
 @interface NewCommentViewController () {
     MyManager *dao;
@@ -21,31 +22,41 @@
 
 @implementation NewCommentViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     dao = [MyManager sharedManager];
     login = [LoginManager new];
 }
 
--(void) viewWillDisappear:(BOOL)animated {
+-(void) viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
     [self.view endEditing:YES];
 }
 
-- (void) viewDidDisappear:(BOOL)animated {
+- (void) viewDidDisappear:(BOOL)animated
+{
     [super viewDidDisappear:animated];
     dao.toNewMsg = false;
 }
 
-- (IBAction)cancel:(id)sender {
+- (IBAction)cancel:(id)sender
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)done:(id)sender {
-//    []
-    
-    [dao publishComment: self.comment.text];
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)done:(id)sender
+{
+    if (self.comment.text.length > 5)
+    {
+        [dao publishComment: self.comment.text];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else
+    {
+        [self showAlertWithTitle:@"Oops.." description:@"Your message is too short."];
+    }
 }
 @end

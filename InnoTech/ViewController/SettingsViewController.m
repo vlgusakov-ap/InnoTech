@@ -34,6 +34,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *facebookLogo;
 @property (weak, nonatomic) IBOutlet UIView *pushNotificationsView;
+@property (weak, nonatomic) IBOutlet UISwitch *offlineModeSwitch;
+@property (strong, nonatomic) IBOutlet UIVisualEffectView *premiumNotificationView;
 
 - (IBAction)closeSettings:(id)sender;
 - (IBAction)helpAndSupport:(id)sender;
@@ -42,6 +44,9 @@
 - (IBAction)triggerInfoLabel:(id)sender;
 - (IBAction)activatePremium:(id)sender;
 - (IBAction)allowPushNotifications:(id)sender;
+- (IBAction)offlineModeToggled:(id)sender;
+- (IBAction)premiumNotificationCancelTouched:(id)sender;
+- (IBAction)premiumNotificationDetailsTouched:(id)sender;
 
 @end
 
@@ -67,13 +72,17 @@
                                              selector:@selector(appDidBecomeActive:)
                                                  name:@"applicationDidBecomeActive"
                                                object:nil];
+    self.premiumNotificationView.frame = self.view.bounds;
+    [self.view addSubview:self.premiumNotificationView];
+    self.premiumNotificationView.alpha = 0;
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.premiumButton.active = [[PremiumManager sharedManager] premiumStatus];
-    
+    [self.offlineModeSwitch setOn:[[PremiumManager sharedManager] premiumStatus]];
+    [self.offlineModeSwitch setEnabled:![[PremiumManager sharedManager] premiumStatus]];
     //post a notification that the app became active
     UIUserNotificationSettings *grantedSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
     if (grantedSettings.types != UIUserNotificationTypeNone)
@@ -84,6 +93,11 @@
     {
         self.pushNotificationsView.hidden = false;
     }
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -119,26 +133,29 @@
 
     if ([mailVC canOpenMail])
     {
-        [self presentViewController:mailVC animated:YES completion:nil];
+        [self presentViewController:mailVC animated:YES completion:^{
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        }];
     }
 }
 
 - (IBAction)facebookLogin:(id)sender
 {
     [[LoginManager sharedManager] loginWithFacebook:self];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+
 }
 
 - (IBAction)triggerInfoLabel:(id)sender {
     self.infoLabel.hidden = !self.infoLabel.hidden;
 }
 
-- (IBAction)activatePremium:(id)sender {
+- (IBAction)activatePremium:(id)sender
+{
         
-    if ([[PremiumManager sharedManager] premiumStatus] == Inactive) {
-        PremiumViewController *premiumVC = [self.storyboard instantiateViewControllerWithIdentifier:@"premiumVC"];
-        premiumVC.presentedModally = YES;
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:premiumVC];
-        [self presentViewController:navController animated:YES completion:nil];
+    if ([[PremiumManager sharedManager] premiumStatus] == Inactive)
+    {
+        [self presentPremiumVC];
     }
 }
 
@@ -146,9 +163,52 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
 }
 
+- (IBAction)offlineModeToggled:(UISwitch *)sender
+{
+    if (sender.isOn)
+    {
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
+        {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.premiumNotificationView.alpha = 1;
+            }];
+        });
+        
+    }
+}
+
+
+- (IBAction)premiumNotificationCancelTouched:(id)sender
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.premiumNotificationView.alpha = 0;
+    }];
+
+    [self.offlineModeSwitch setOn:NO];
+}
+
+- (IBAction)premiumNotificationDetailsTouched:(id)sender
+{
+    [self presentPremiumVC];
+    // add a small delay
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        self.premiumNotificationView.alpha = 0;
+    });
+}
+
+- (void) presentPremiumVC
+{
+    PremiumViewController *premiumVC = [self.storyboard instantiateViewControllerWithIdentifier:@"premiumVC"];
+    premiumVC.presentedModally = YES;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:premiumVC];
+    [self presentViewController:navController animated:YES completion:nil];
+
+}
 - (void) appDidBecomeActive:(NSNotification *) notification
 {
-    // [notification name] should always be @"TestNotification"
+    // [notification name] should always be @"applicationDidBecomeActive"
     // unless you use this method for observation of other notifications
     // as well.
     

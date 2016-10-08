@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface PremiumViewController : UIViewController
+#import "BaseViewController.h"
+@interface PremiumViewController : BaseViewController
 
 @property (nonatomic) BOOL presentedModally;
 

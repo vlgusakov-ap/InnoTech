@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface DetailViewController: UIViewController <UIWebViewDelegate>
+@interface DetailViewController: BaseViewController <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) NSString *link;
 @property (nonatomic) NSUInteger selectedRow;

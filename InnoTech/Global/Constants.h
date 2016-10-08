@@ -9,10 +9,11 @@
 @import UIKit;
 @import SDWebImage;
 
-static NSInteger kAdHeight = 100;
-static NSInteger kProductHeight = 160;
+static NSInteger kAdHeightSmall = 85;
+static NSInteger kAdHeightRegular = 100;
 
-
+static NSInteger kProductHeightSmall = 120;
+static NSInteger kProductHeightRegular = 140;
 
 static NSString *kHelpShiftApiKey = @"b282651e95bddabb072b6005cdd101b7";
 static NSString *kHelpShiftDomainName = @"innotech.helpshift.com";
@@ -35,6 +36,10 @@ static NSString *kCommentName = @"name";
 static NSString *kCommentImage = @"img";
 static NSString *kCommentText = @"comment";
 static NSString *kCommentUserID = @"userID";
+static NSString *kCommentPremiumStatus = @"isPremium";
+static NSString *kCommentTimestamp = @"commentTime";
+
+
 
 static NSString *kProductsChild = @"products";
 static NSString *kCommentssChild = @"comments";
@@ -45,3 +50,7 @@ static NSString *kImageSettings = @"settings";
 static NSString *kImageRefine = @"refine";
 
 static NSString *kFavorites = @"favorites";
+
+@interface Constants : NSObject
++ (NSTimeInterval) currentTime;
+@end
