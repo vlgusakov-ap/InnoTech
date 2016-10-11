@@ -51,7 +51,7 @@ typedef NS_ENUM (NSUInteger, EditAction) {
 {
     UITableViewRowAction *addToFavorites;
     
-    if (![dao.productsDict[kFavorites] containsObject:[self products][indexPath.row]]) { //-1
+    if (![dao.productsDict[kFavorites] containsProduct:[self products][indexPath.row]]) { //-1
         addToFavorites = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"\u2606\nAdd to\nFavorites" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
             [self commitAction:AddToFavorites forRowAtIndexPath:indexPath];
         }];

@@ -13,7 +13,7 @@
 - (BOOL) containsProduct: (Product *) product {
     
     for (Product *prod in self) {
-        if ([prod.name isEqualToString:product.name]) {
+        if ([prod.key isEqualToString:product.key]) {
             return true;
         }
     }

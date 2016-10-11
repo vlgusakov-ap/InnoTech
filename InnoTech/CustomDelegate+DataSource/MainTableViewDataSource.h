@@ -14,8 +14,6 @@
 - (instancetype) initWithTableView:(UITableView *)tableView
                  andViewController: (UIViewController *) viewController;
 
-- (NSArray *) getEditActionsForIndexPath: (NSIndexPath *) indexPath;
-
 @property (nonatomic, strong) id <MyManagerDelegate> delegate;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *products;

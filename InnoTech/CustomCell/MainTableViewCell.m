@@ -18,6 +18,7 @@
 
 - (void) prepareForReuse {
     [super prepareForReuse];
+    self.backgroundImageView.hidden = YES;
     self.backgroundImageView.image = nil;
     self.title.text = @"";
     self.descr.text = @"";

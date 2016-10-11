@@ -19,7 +19,7 @@
     
     MyManager *dao = [MyManager sharedManager];
     NSString *cacheKey = [NSURL URLWithString:product.imageURL].absoluteString.MD5;
-    
+    self.backgroundImageView.hidden = NO;
     SDImageCache *imageCache = [dao imageCache];
     [imageCache queryDiskCacheForKey:cacheKey done:^(UIImage *image, SDImageCacheType cacheType) {
         
