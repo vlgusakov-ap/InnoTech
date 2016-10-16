@@ -338,7 +338,6 @@
 				2161FEA71D394BDB009A51F2 /* RNCachingURLProtocol.m */,
 				21ABFFD81D98BE83008A337D /* SizeUtils.h */,
 				21ABFFD91D98BE83008A337D /* SizeUtils.m */,
-				217AFADB1D38465800E02BDE /* Main.storyboard */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -543,6 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				210DFB871D3F598500E815B6 /* InnoTech.entitlements */,
+				217AFADB1D38465800E02BDE /* Main.storyboard */,
 				2161FEAD1D394BE0009A51F2 /* Global */,
 				2161FEC01D394C69009A51F2 /* Model */,
 				2161FEC31D394C7F009A51F2 /* View */,

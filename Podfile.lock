@@ -14,6 +14,14 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AsyncDisplayKit (1.9.90):
+    - AsyncDisplayKit/PINRemoteImage (= 1.9.90)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.9.90)
+  - AsyncDisplayKit/Core (1.9.90):
+    - AsyncDisplayKit/ASDealloc2MainObject
+  - AsyncDisplayKit/PINRemoteImage (1.9.90):
+    - AsyncDisplayKit/Core
+    - PINRemoteImage/iOS (>= 3.0.0-beta.3)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -22,9 +30,9 @@ PODS:
   - Bolts/Tasks (1.8.4)
   - FBSDKCoreKit (4.16.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.16.0):
+  - FBSDKLoginKit (4.16.1):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.16.0):
+  - FBSDKShareKit (4.16.1):
     - FBSDKCoreKit
   - Firebase (3.7.1):
     - Firebase/Core (= 3.7.1)
@@ -121,6 +129,11 @@ PODS:
     - libwebp/core
   - libwebp/webp (0.5.1)
   - MBProgressHUD (1.0.0)
+  - PINCache (3.0.1-beta)
+  - PINRemoteImage/Core (3.0.0-beta.3):
+    - PINCache (>= 3.0.0-beta)
+  - PINRemoteImage/iOS (3.0.0-beta.3):
+    - PINRemoteImage/Core
   - SDWebImage/Core (3.8.2)
   - SDWebImage/WebP (3.8.2):
     - libwebp
@@ -128,6 +141,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AsyncDisplayKit
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -145,10 +159,11 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AsyncDisplayKit: 926ded3ca3fb7026565e0e81f0e132fea4d3a6eb
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
-  FBSDKLoginKit: 9a514a55a7d05190f64d4ef09502737588b5b561
-  FBSDKShareKit: e81505de17fc0624cbaa87b83cccc9f2a786e6cb
+  FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
+  FBSDKShareKit: 53af0239b5bd2ebf191f32f75991245a208cc982
   Firebase: be473484f0d515e72ffd04acf22f981773c23e58
   FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
   FirebaseAuth: 75a062bbf2d3c97d1e6e55bbc110e13a6853e25d
@@ -168,8 +183,10 @@ SPEC CHECKSUMS:
   IAPHelper: e994287a6ab3cf6169efb4a09f7207d4dc413acf
   libwebp: b9126f8982a95370cf4eaad9bb3fefd57f052c15
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  PINCache: 6911fe422a633e18b3d3ddf2bd4f0e55e36e2892
+  PINRemoteImage: 308731aa6534500e58fc211b9cc2bb7252df25ba
+  SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
 
-PODFILE CHECKSUM: 4ead76295570c442f1d20a68b99506a7cc83c1ab
+PODFILE CHECKSUM: a479b3d0b0140ec722505ff52f7af29ec42f8205
 
 COCOAPODS: 1.0.1
