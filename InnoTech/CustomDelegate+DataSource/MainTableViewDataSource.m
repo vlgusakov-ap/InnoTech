@@ -7,8 +7,8 @@
 //
 
 #import "MainTableViewDataSource.h"
-#import "MainTableViewCell+ConfigureForProduct.h"
 #import "AdMob.h"
+#import "MainTableViewCell.h"
 //#import <StartApp/StartApp.h> // new ads
 //#import "MoPubAd.h"
 
@@ -54,8 +54,11 @@ typedef NS_ENUM (NSUInteger, EditAction) {
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     MainTableViewCell *cell = (MainTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
-    Product *currCellProduct = dao.productsDict[dao.currentSection][indexPath.row];
+#warning todo
+
+    NSArray *currentProducts = dao.productsDict[dao.currentSection];
+    NSUInteger productIndex = indexPath.row;
+    Product *currCellProduct = currentProducts[productIndex];
     [cell configureForProduct:currCellProduct];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

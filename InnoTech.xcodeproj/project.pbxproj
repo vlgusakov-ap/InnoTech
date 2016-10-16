@@ -44,7 +44,6 @@
 		2161FEEF1D394D0D009A51F2 /* MainTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEEC1D394D0D009A51F2 /* MainTableViewDataSource.m */; };
 		2161FEF01D394D0D009A51F2 /* MainTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEEE1D394D0D009A51F2 /* MainTableViewDelegate.m */; };
 		2161FEF41D394D30009A51F2 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEF31D394D30009A51F2 /* SWRevealViewController.m */; };
-		2161FF001D394D49009A51F2 /* MainTableViewCell+ConfigureForProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEF71D394D49009A51F2 /* MainTableViewCell+ConfigureForProduct.m */; };
 		2161FF011D394D49009A51F2 /* NSArray+Check.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEF91D394D49009A51F2 /* NSArray+Check.m */; };
 		2161FF021D394D49009A51F2 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEFB1D394D49009A51F2 /* NSString+MD5.m */; };
 		2161FF031D394D49009A51F2 /* NSString+Sha1.m in Sources */ = {isa = PBXBuildFile; fileRef = 2161FEFD1D394D49009A51F2 /* NSString+Sha1.m */; };
@@ -116,7 +115,6 @@
 		21ABFFE91DA217E9008A337D /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ABFFE81DA217E9008A337D /* Constants.m */; };
 		21ABFFEC1DA22587008A337D /* UIViewController+Addons.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ABFFEB1DA22587008A337D /* UIViewController+Addons.m */; };
 		21B5CDF41D8F764000E8ADCF /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B5CDF31D8F764000E8ADCF /* BaseTableViewController.m */; };
-		21B5CDF81D8F788C00E8ADCF /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B5CDF71D8F788C00E8ADCF /* CategoryTableViewController.m */; };
 		21BF48411D8E2CB600409715 /* PremiumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BF48401D8E2CB600409715 /* PremiumManager.m */; };
 		21CAC9041D7D3A7E000F5E89 /* PremiumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CAC9031D7D3A7E000F5E89 /* PremiumButton.m */; };
 		21CAC9061D7D5523000F5E89 /* NoCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21CAC9051D7D5523000F5E89 /* NoCommentsView.xib */; };
@@ -191,8 +189,6 @@
 		2161FEEE1D394D0D009A51F2 /* MainTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTableViewDelegate.m; path = "CustomDelegate+DataSource/MainTableViewDelegate.m"; sourceTree = "<group>"; };
 		2161FEF21D394D30009A51F2 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = SWRevealViewController/SWRevealViewController.h; sourceTree = "<group>"; };
 		2161FEF31D394D30009A51F2 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = SWRevealViewController/SWRevealViewController.m; sourceTree = "<group>"; };
-		2161FEF61D394D49009A51F2 /* MainTableViewCell+ConfigureForProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MainTableViewCell+ConfigureForProduct.h"; path = "Categories/MainTableViewCell+ConfigureForProduct.h"; sourceTree = "<group>"; };
-		2161FEF71D394D49009A51F2 /* MainTableViewCell+ConfigureForProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MainTableViewCell+ConfigureForProduct.m"; path = "Categories/MainTableViewCell+ConfigureForProduct.m"; sourceTree = "<group>"; };
 		2161FEF81D394D49009A51F2 /* NSArray+Check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Check.h"; path = "Categories/NSArray+Check.h"; sourceTree = "<group>"; };
 		2161FEF91D394D49009A51F2 /* NSArray+Check.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Check.m"; path = "Categories/NSArray+Check.m"; sourceTree = "<group>"; };
 		2161FEFA1D394D49009A51F2 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "Categories/NSString+MD5.h"; sourceTree = "<group>"; };
@@ -275,8 +271,6 @@
 		21ABFFEB1DA22587008A337D /* UIViewController+Addons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Addons.m"; sourceTree = "<group>"; };
 		21B5CDF21D8F764000E8ADCF /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseTableViewController.h; path = ViewController/BaseTableViewController.h; sourceTree = "<group>"; };
 		21B5CDF31D8F764000E8ADCF /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseTableViewController.m; path = ViewController/BaseTableViewController.m; sourceTree = "<group>"; };
-		21B5CDF61D8F788C00E8ADCF /* CategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewController.h; sourceTree = "<group>"; };
-		21B5CDF71D8F788C00E8ADCF /* CategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewController.m; sourceTree = "<group>"; };
 		21BF483F1D8E2CB600409715 /* PremiumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PremiumManager.h; path = Global/PremiumManager.h; sourceTree = "<group>"; };
 		21BF48401D8E2CB600409715 /* PremiumManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PremiumManager.m; path = Global/PremiumManager.m; sourceTree = "<group>"; };
 		21CAC9021D7D3A7E000F5E89 /* PremiumButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PremiumButton.h; sourceTree = "<group>"; };
@@ -321,6 +315,93 @@
 				211D9EEB1D8E5FEB006FB309 /* FirebaseManager.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		214144B41DB32B8E009C3F69 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2161FECC1D394CA7009A51F2 /* MainViewController.h */,
+				2161FECD1D394CA7009A51F2 /* MainViewController.m */,
+				2161FEE61D394CE6009A51F2 /* MainTableViewCell.h */,
+				2161FEE71D394CE6009A51F2 /* MainTableViewCell.m */,
+				214144B51DB32BAF009C3F69 /* Detail */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		214144B51DB32BAF009C3F69 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				2161FECA1D394CA7009A51F2 /* DetailViewController.h */,
+				2161FECB1D394CA7009A51F2 /* DetailViewController.m */,
+				2161FED41D394CA7009A51F2 /* RefineViewController.h */,
+				2161FED51D394CA7009A51F2 /* RefineViewController.m */,
+				214144B61DB32BBE009C3F69 /* Comments */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		214144B61DB32BBE009C3F69 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				2161FEC61D394CA7009A51F2 /* CommentsViewController.h */,
+				2161FEC71D394CA7009A51F2 /* CommentsViewController.m */,
+				2161FEE41D394CE6009A51F2 /* CommentTableViewCell.h */,
+				2161FEE51D394CE6009A51F2 /* CommentTableViewCell.m */,
+				2161FED01D394CA7009A51F2 /* NewCommentViewController.h */,
+				2161FED11D394CA7009A51F2 /* NewCommentViewController.m */,
+			);
+			name = Comments;
+			sourceTree = "<group>";
+		};
+		214144B71DB32BD2009C3F69 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				2161FECE1D394CA7009A51F2 /* MenuViewController.h */,
+				2161FECF1D394CA7009A51F2 /* MenuViewController.m */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		214144B81DB32BF8009C3F69 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2161FED61D394CA7009A51F2 /* SettingsViewController.h */,
+				2161FED71D394CA7009A51F2 /* SettingsViewController.m */,
+				2161FEC81D394CA7009A51F2 /* ConfiguredMailComposeViewController.h */,
+				2161FEC91D394CA7009A51F2 /* ConfiguredMailComposeViewController.m */,
+				214144BB1DB32C70009C3F69 /* Buttons */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		214144B91DB32C04009C3F69 /* Premium */ = {
+			isa = PBXGroup;
+			children = (
+				2161FED21D394CA7009A51F2 /* PremiumViewController.h */,
+				2161FED31D394CA7009A51F2 /* PremiumViewController.m */,
+			);
+			name = Premium;
+			sourceTree = "<group>";
+		};
+		214144BA1DB32C2A009C3F69 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				2161FEC41D394CA7009A51F2 /* AboutViewController.h */,
+				2161FEC51D394CA7009A51F2 /* AboutViewController.m */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		214144BB1DB32C70009C3F69 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				21CAC9021D7D3A7E000F5E89 /* PremiumButton.h */,
+				21CAC9031D7D3A7E000F5E89 /* PremiumButton.m */,
+				211D9EEE1D8E60FB006FB309 /* FacebookButton.h */,
+				211D9EEF1D8E60FB006FB309 /* FacebookButton.m */,
+			);
+			name = Buttons;
 			sourceTree = "<group>";
 		};
 		2161FEAD1D394BE0009A51F2 /* Global */ = {
@@ -374,46 +455,17 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		2161FEE21D394CAC009A51F2 /* ViewController */ = {
+		2161FEE21D394CAC009A51F2 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				21ABFFE11DA1F468008A337D /* Base ViewControllers */,
-				21B5CDF51D8F785E00E8ADCF /* TableViewControllers */,
-				2161FEC41D394CA7009A51F2 /* AboutViewController.h */,
-				2161FEC51D394CA7009A51F2 /* AboutViewController.m */,
-				2161FEC61D394CA7009A51F2 /* CommentsViewController.h */,
-				2161FEC71D394CA7009A51F2 /* CommentsViewController.m */,
-				2161FEC81D394CA7009A51F2 /* ConfiguredMailComposeViewController.h */,
-				2161FEC91D394CA7009A51F2 /* ConfiguredMailComposeViewController.m */,
-				2161FECA1D394CA7009A51F2 /* DetailViewController.h */,
-				2161FECB1D394CA7009A51F2 /* DetailViewController.m */,
-				2161FECE1D394CA7009A51F2 /* MenuViewController.h */,
-				2161FECF1D394CA7009A51F2 /* MenuViewController.m */,
-				2161FED01D394CA7009A51F2 /* NewCommentViewController.h */,
-				2161FED11D394CA7009A51F2 /* NewCommentViewController.m */,
-				2161FED21D394CA7009A51F2 /* PremiumViewController.h */,
-				2161FED31D394CA7009A51F2 /* PremiumViewController.m */,
-				2161FED41D394CA7009A51F2 /* RefineViewController.h */,
-				2161FED51D394CA7009A51F2 /* RefineViewController.m */,
-				2161FED61D394CA7009A51F2 /* SettingsViewController.h */,
-				2161FED71D394CA7009A51F2 /* SettingsViewController.m */,
+				214144B41DB32B8E009C3F69 /* Main */,
+				214144BA1DB32C2A009C3F69 /* About */,
+				214144B71DB32BD2009C3F69 /* Menu */,
+				214144B91DB32C04009C3F69 /* Premium */,
+				214144B81DB32BF8009C3F69 /* Settings */,
 			);
-			name = ViewController;
-			sourceTree = "<group>";
-		};
-		2161FEE31D394CCA009A51F2 /* CustomClasses */ = {
-			isa = PBXGroup;
-			children = (
-				2161FEE41D394CE6009A51F2 /* CommentTableViewCell.h */,
-				2161FEE51D394CE6009A51F2 /* CommentTableViewCell.m */,
-				2161FEE61D394CE6009A51F2 /* MainTableViewCell.h */,
-				2161FEE71D394CE6009A51F2 /* MainTableViewCell.m */,
-				21CAC9021D7D3A7E000F5E89 /* PremiumButton.h */,
-				21CAC9031D7D3A7E000F5E89 /* PremiumButton.m */,
-				211D9EEE1D8E60FB006FB309 /* FacebookButton.h */,
-				211D9EEF1D8E60FB006FB309 /* FacebookButton.m */,
-			);
-			name = CustomClasses;
+			name = Screens;
 			sourceTree = "<group>";
 		};
 		2161FEEA1D394CFC009A51F2 /* CustomDelegate+DataSource */ = {
@@ -439,8 +491,6 @@
 		2161FEF51D394D3D009A51F2 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				2161FEF61D394D49009A51F2 /* MainTableViewCell+ConfigureForProduct.h */,
-				2161FEF71D394D49009A51F2 /* MainTableViewCell+ConfigureForProduct.m */,
 				2161FEF81D394D49009A51F2 /* NSArray+Check.h */,
 				2161FEF91D394D49009A51F2 /* NSArray+Check.m */,
 				2161FEFA1D394D49009A51F2 /* NSString+MD5.h */,
@@ -546,8 +596,7 @@
 				2161FEAD1D394BE0009A51F2 /* Global */,
 				2161FEC01D394C69009A51F2 /* Model */,
 				2161FEC31D394C7F009A51F2 /* View */,
-				2161FEE21D394CAC009A51F2 /* ViewController */,
-				2161FEE31D394CCA009A51F2 /* CustomClasses */,
+				2161FEE21D394CAC009A51F2 /* Screens */,
 				2161FEEA1D394CFC009A51F2 /* CustomDelegate+DataSource */,
 				2161FEF11D394D26009A51F2 /* SWRevealViewController */,
 				2161FEF51D394D3D009A51F2 /* Categories */,
@@ -583,17 +632,6 @@
 				21ABFFDF1DA1F44C008A337D /* BaseModalViewController.m */,
 			);
 			name = "Base ViewControllers";
-			sourceTree = "<group>";
-		};
-		21B5CDF51D8F785E00E8ADCF /* TableViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				2161FECC1D394CA7009A51F2 /* MainViewController.h */,
-				2161FECD1D394CA7009A51F2 /* MainViewController.m */,
-				21B5CDF61D8F788C00E8ADCF /* CategoryTableViewController.h */,
-				21B5CDF71D8F788C00E8ADCF /* CategoryTableViewController.m */,
-			);
-			name = TableViewControllers;
 			sourceTree = "<group>";
 		};
 		694BF494C1D5052CD6A4B4AE /* Pods */ = {
@@ -815,7 +853,6 @@
 				2161FEF01D394D0D009A51F2 /* MainTableViewDelegate.m in Sources */,
 				2161FEDB1D394CA7009A51F2 /* DetailViewController.m in Sources */,
 				2161FEE91D394CE6009A51F2 /* MainTableViewCell.m in Sources */,
-				21B5CDF81D8F788C00E8ADCF /* CategoryTableViewController.m in Sources */,
 				2161FF041D394D49009A51F2 /* NSURLRequest+Extended.m in Sources */,
 				2161FEBC1D394C63009A51F2 /* LoginManager.m in Sources */,
 				2161FF021D394D49009A51F2 /* NSString+MD5.m in Sources */,
@@ -845,7 +882,6 @@
 				21BF48411D8E2CB600409715 /* PremiumManager.m in Sources */,
 				2161FEAC1D394BDB009A51F2 /* RNCachingURLProtocol.m in Sources */,
 				2161FEEF1D394D0D009A51F2 /* MainTableViewDataSource.m in Sources */,
-				2161FF001D394D49009A51F2 /* MainTableViewCell+ConfigureForProduct.m in Sources */,
 				21ABFFDD1DA1F426008A337D /* BaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

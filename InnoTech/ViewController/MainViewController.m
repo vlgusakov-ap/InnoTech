@@ -252,10 +252,13 @@
 {
     UIViewController *destinationVC = [segue destinationViewController];
     
+#warning todo
     if ([destinationVC isKindOfClass:[DetailViewController class]])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        dao.currentProduct = dao.productsDict[dao.currentSection][indexPath.row];
+        NSArray *currentProducts = dao.productsDict[dao.currentSection]; //dataArray[[dataArray count] - 1 - indexPath.row]
+        NSUInteger productIndex = indexPath.row;
+        dao.currentProduct = currentProducts[productIndex];
         DetailViewController *detailVC = (DetailViewController*)destinationVC;
         detailVC.link = dao.currentProduct.urlString;
         detailVC.title = [dao.currentProduct.name uppercaseString];
