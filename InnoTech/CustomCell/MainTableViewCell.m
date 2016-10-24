@@ -12,10 +12,8 @@
 #import "Constants.h"
 #import "MyManager.h"
 @import SDWebImage;
-#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
 @interface MainTableViewCell ()
-@property (nonatomic, strong) ASNetworkImageNode *networkImageNode;
 @end
 
 @implementation MainTableViewCell
@@ -27,7 +25,8 @@
 
 - (void) prepareForReuse {
     [super prepareForReuse];
-    self.backgroundImageView.image = nil;
+    self.backgroundImageView.image = NULL;
+    [self.backgroundImageView sd_cancelCurrentImageLoad];
     self.title.text = @"";
     self.descr.text = @"";
     self.cachedIcon.hidden = true;
@@ -49,7 +48,9 @@
     [imageCache queryDiskCacheForKey:cacheKey done:^(UIImage *image, SDImageCacheType cacheType) {
         
         if (image != nil) {
-            self.backgroundImageView.image = image;
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                self.backgroundImageView.image = image;
+            });
         }
         else {
             [self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:product.imageURL]

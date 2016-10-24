@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "MyManager.h"
 #import "SizeUtils.h"
+#import "MainTableViewCell.h"
 
 typedef NS_ENUM (NSUInteger, EditAction) {
     AddToFavorites = 0,
@@ -64,6 +65,16 @@ typedef NS_ENUM (NSUInteger, EditAction) {
     }
     
     return @[addToFavorites];
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell isKindOfClass:[MainTableViewCell class]])
+    {
+        MainTableViewCell *mainCell = (MainTableViewCell*)cell;
+        mainCell.backgroundImageView.image = NULL;
+        [mainCell.backgroundImageView sd_cancelCurrentImageLoad];
+    }
 }
 
 - (void) commitAction: (EditAction) action forRowAtIndexPath: (NSIndexPath *) indexPath

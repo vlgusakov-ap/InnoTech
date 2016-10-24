@@ -324,6 +324,7 @@
 				2161FECD1D394CA7009A51F2 /* MainViewController.m */,
 				2161FEE61D394CE6009A51F2 /* MainTableViewCell.h */,
 				2161FEE71D394CE6009A51F2 /* MainTableViewCell.m */,
+				2161FEEA1D394CFC009A51F2 /* CustomDelegate+DataSource */,
 				214144B51DB32BAF009C3F69 /* Detail */,
 			);
 			name = Main;
@@ -359,6 +360,7 @@
 			children = (
 				2161FECE1D394CA7009A51F2 /* MenuViewController.h */,
 				2161FECF1D394CA7009A51F2 /* MenuViewController.m */,
+				2161FEF11D394D26009A51F2 /* SWRevealViewController */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -597,8 +599,6 @@
 				2161FEC01D394C69009A51F2 /* Model */,
 				2161FEC31D394C7F009A51F2 /* View */,
 				2161FEE21D394CAC009A51F2 /* Screens */,
-				2161FEEA1D394CFC009A51F2 /* CustomDelegate+DataSource */,
-				2161FEF11D394D26009A51F2 /* SWRevealViewController */,
 				2161FEF51D394D3D009A51F2 /* Categories */,
 				21F4E5C61D8E340500D35835 /* Assets.xcassets */,
 				2161FF051D394D60009A51F2 /* Images */,

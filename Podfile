@@ -13,7 +13,6 @@ target 'InnoTech' do
 	pod 'FBSDKCoreKit'
 	pod 'FBSDKLoginKit'
 	pod 'FBSDKShareKit'
-	pod 'AsyncDisplayKit'
 	pod 'SDWebImage/WebP'
 	pod 'Firebase'
 	pod 'Firebase/Database'
