@@ -150,7 +150,7 @@
                     [self.productsDict[category] removeObject:productToUpdate];
                     
                     if ([category isEqualToString:self.currentSection]) {
-                        [self.delegate tableViewAction: Delete atIndex: indexOfProductToUpdate];
+                        [self.delegate tableViewAction: action atIndex: indexOfProductToUpdate];
                         
                     }
 
@@ -165,7 +165,7 @@
             }
             
             if (action == Add) {
-                [self.productsDict[category] addObject:newProduct];
+                [self.productsDict[category] insertObject:newProduct atIndex:0];
             } else
                 if (action == Update) {
                     
@@ -179,7 +179,8 @@
                 }
             
             if ([category isEqualToString:self.currentSection]) {
-                NSUInteger index = (action == Add) ? ((NSArray *)self.productsDict[self.currentSection]).count-1 : indexOfProductToUpdate; // +1
+
+                NSUInteger index = (action == Add) ? 0: indexOfProductToUpdate;
                 NSLog(@"Product %@ inserted at index %ld", newProduct.name, index);
 
                 [self.delegate tableViewAction: action atIndex: index];
@@ -197,7 +198,7 @@
                 [self.productsDict[category] removeObject:productToUpdate];
 
                 if ([category isEqualToString:self.currentSection]) {
-                    [self.delegate tableViewAction:Delete atIndex:indexOfProductToDelete]; //+1
+                    [self.delegate tableViewAction:action atIndex:indexOfProductToDelete]; //+1
                 }
             }
         }
