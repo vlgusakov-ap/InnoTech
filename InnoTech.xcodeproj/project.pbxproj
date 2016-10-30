@@ -13,6 +13,7 @@
 		211D9EE81D8E4ED5006FB309 /* ITUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 211D9EE71D8E4ED5006FB309 /* ITUser.m */; };
 		211D9EEC1D8E5FEB006FB309 /* FirebaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 211D9EEB1D8E5FEB006FB309 /* FirebaseManager.m */; };
 		211D9EF01D8E60FB006FB309 /* FacebookButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 211D9EEF1D8E60FB006FB309 /* FacebookButton.m */; };
+		211E639A1DC58870004FB8E7 /* ProductComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 211E63991DC58870004FB8E7 /* ProductComment.m */; };
 		215F277C1D3AB3BB0072513B /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 215F277B1D3AB3BB0072513B /* Menu.m */; };
 		215F277E1D3AB5900072513B /* accessories.png in Resources */ = {isa = PBXBuildFile; fileRef = 215F277D1D3AB5900072513B /* accessories.png */; };
 		215F27841D3F11880072513B /* physics.png in Resources */ = {isa = PBXBuildFile; fileRef = 215F27831D3F11880072513B /* physics.png */; };
@@ -132,6 +133,8 @@
 		211D9EEB1D8E5FEB006FB309 /* FirebaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirebaseManager.m; path = Model/FirebaseManager.m; sourceTree = "<group>"; };
 		211D9EEE1D8E60FB006FB309 /* FacebookButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookButton.h; path = Model/FacebookButton.h; sourceTree = "<group>"; };
 		211D9EEF1D8E60FB006FB309 /* FacebookButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookButton.m; path = Model/FacebookButton.m; sourceTree = "<group>"; };
+		211E63981DC58870004FB8E7 /* ProductComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductComment.h; sourceTree = "<group>"; };
+		211E63991DC58870004FB8E7 /* ProductComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductComment.m; sourceTree = "<group>"; };
 		215F277A1D3AB3BB0072513B /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		215F277B1D3AB3BB0072513B /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		215F277D1D3AB5900072513B /* accessories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accessories.png; sourceTree = "<group>"; };
@@ -441,6 +444,8 @@
 				211D9EE71D8E4ED5006FB309 /* ITUser.m */,
 				215F277A1D3AB3BB0072513B /* Menu.h */,
 				215F277B1D3AB3BB0072513B /* Menu.m */,
+				211E63981DC58870004FB8E7 /* ProductComment.h */,
+				211E63991DC58870004FB8E7 /* ProductComment.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -831,7 +836,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -849,6 +854,7 @@
 				21ABFFEC1DA22587008A337D /* UIViewController+Addons.m in Sources */,
 				21B5CDF41D8F764000E8ADCF /* BaseTableViewController.m in Sources */,
 				2161FEF41D394D30009A51F2 /* SWRevealViewController.m in Sources */,
+				211E639A1DC58870004FB8E7 /* ProductComment.m in Sources */,
 				2161FF011D394D49009A51F2 /* NSArray+Check.m in Sources */,
 				2161FEF01D394D0D009A51F2 /* MainTableViewDelegate.m in Sources */,
 				2161FEDB1D394CA7009A51F2 /* DetailViewController.m in Sources */,

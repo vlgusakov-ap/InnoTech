@@ -58,6 +58,8 @@
         }
     }
     
+    [self checkForNewerVersionAfterDelay:1];
+    
     return YES;
 }
 
@@ -188,6 +190,49 @@
     [self.window.rootViewController.view addSubview:view];
     
     //    [[UILabel appearance] setFont:[UIFont fontWithName:@"Avenir Next" size:17.0]];
+}
+
+- (void)checkForNewerVersionAfterDelay:(NSInteger)delay
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appID = infoDictionary[@"CFBundleIdentifier"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?bundleId=%@", appID]];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    NSDictionary *lookup = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    if ([lookup[@"resultCount"] integerValue] == 1)
+    {
+        if (((NSArray*)lookup[@"results"]).count > 0)
+        {
+            NSString *appStoreVersion = lookup[@"results"][0][@"version"];
+            NSString *currentVersion = infoDictionary[@"CFBundleShortVersionString"];
+            
+            if (![appStoreVersion isEqualToString:currentVersion])
+            {
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"New Version" message:@"Newer version is available for download!" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Later" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                }];
+                UIAlertAction *updateAction = [UIAlertAction actionWithTitle:@"Update Now" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self openUpdateInAppStore];
+                }];
+                
+                [alertController addAction:cancelAction];
+                [alertController addAction:updateAction];
+                NSLog(@"Need to update [%@ != %@]", appStoreVersion, currentVersion);
+                
+                // Delay execution of my block for 3 seconds.
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
+                });
+            }
+        }
+    }
+}
+
+-(void)openUpdateInAppStore
+{
+    NSString *appStoreUrl = @"https://itunes.apple.com/us/app/innotech/id1136143366?ls=1&mt=8";
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appStoreUrl]];
 }
 
 @end

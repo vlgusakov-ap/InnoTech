@@ -14,6 +14,7 @@
 @import SDWebImage;
 
 @interface MainTableViewCell ()
+@property (weak, nonatomic) IBOutlet UIView *titleDesctiptionView;
 @end
 
 @implementation MainTableViewCell
@@ -26,6 +27,7 @@
 - (void) prepareForReuse {
     [super prepareForReuse];
     self.backgroundImageView.image = NULL;
+    self.backgroundImageView.clipsToBounds = true;
     [self.backgroundImageView sd_cancelCurrentImageLoad];
     self.title.text = @"";
     self.descr.text = @"";
@@ -61,6 +63,7 @@
         
     }];
 
+    self.backgroundImageView.clipsToBounds = true;
 
     self.title.text = [product.name uppercaseString];
     
@@ -71,7 +74,7 @@
     style.tailIndent = -5.0f;
     
     NSDictionary *typingAttributes = @{
-                                       NSFontAttributeName: [UIFont fontWithName:@"AvenirNextCondensed-Bold" size:17.0f],
+                                       NSFontAttributeName: [UIFont fontWithName:@"AvenirNextCondensed-Bold" size:14.0f],
                                        NSForegroundColorAttributeName : [UIColor whiteColor],
                                        NSStrokeColorAttributeName : [UIColor blackColor],
                                        NSStrokeWidthAttributeName : [NSNumber numberWithFloat:-2.0],
@@ -82,15 +85,11 @@
                                initWithString:product.shortDescr
                                attributes:typingAttributes];
     self.descr.attributedText = str;
-    self.descr.backgroundColor = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 0.3];
-    self.descr.layer.cornerRadius = 5.0f;
     self.descr.layer.masksToBounds = YES;
-    
-    
-    
-    
-    
-    if ([dao.cachedWebsites[product.urlString.MD5]  isEqual: @YES]) {
+    self.titleDesctiptionView.backgroundColor = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 0.3];
+    self.titleDesctiptionView.layer.cornerRadius = 5.0f;
+
+    if ([dao.cachedWebsites[product.urlString.MD5] isEqual: @YES]) {
         product.cached = true;
         self.cachedIcon.hidden = false;
     }

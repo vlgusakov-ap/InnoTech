@@ -93,19 +93,19 @@
     dao.delegate = self;
 }
 
-- (void) configureVC {
+- (void) configureVC
+{
+    dao = [MyManager sharedManager];
     
-        dao = [MyManager sharedManager];
-        
-        if ([dao.currentSection isEqualToString:kSectionFeatured])
-        {
-            [self.rightButton setImage:[UIImage imageNamed:kImageSettings] forState:UIControlStateNormal];
-            
-            featuredFavoritesSC = [[UISegmentedControl alloc] initWithItems:@[@"Featured", @"Favorites"]];
-            featuredFavoritesSC.selectedSegmentIndex = 0;
-            [featuredFavoritesSC addTarget:self action:@selector(segmentControlAction:) forControlEvents:UIControlEventValueChanged];
-            self.navigationItem.titleView = featuredFavoritesSC;
-        }
+    [self.rightButton setImage:[UIImage imageNamed:kImageSettings] forState:UIControlStateNormal];
+    
+    if ([dao.currentSection isEqualToString:kSectionFeatured])
+    {
+        featuredFavoritesSC = [[UISegmentedControl alloc] initWithItems:@[@"Featured", @"Favorites"]];
+        featuredFavoritesSC.selectedSegmentIndex = 0;
+        [featuredFavoritesSC addTarget:self action:@selector(segmentControlAction:) forControlEvents:UIControlEventValueChanged];
+        self.navigationItem.titleView = featuredFavoritesSC;
+    }
         //        } else {
         //            [self.mainViewController.rightButton setImage:nil forState:UIControlStateNormal];
         //            [UIImage imageNamed:kImageRefine]
@@ -124,7 +124,6 @@
 
 - (void) returnToMain
 {
-    
     [featuredFavoritesSC setSelectedSegmentIndex:0];
     dao.currentSection = kSectionFeatured;
     [noFavoritesView removeFromSuperview];
@@ -193,11 +192,11 @@
 }
 
 - (void) rightButtonAction {
-    if ([dao.currentSection isEqualToString:@"featured"] ||
-        [dao.currentSection isEqualToString:@"favorites"]) {
+//    if ([dao.currentSection isEqualToString:@"featured"] ||
+//        [dao.currentSection isEqualToString:@"favorites"]) {
         SettingsViewController *settingsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsVC"];
         [self presentViewController:settingsVC animated:YES completion:nil];
-    }
+//    }
     //    else {
     //        RefineViewController *refineVC = [self.mainViewController.storyboard instantiateViewControllerWithIdentifier:@"refineVC"];
     //        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:refineVC];

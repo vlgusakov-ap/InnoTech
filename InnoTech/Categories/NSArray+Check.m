@@ -10,7 +10,7 @@
 
 @implementation NSArray (Check)
 
-- (BOOL) containsProduct: (Product *) product {
+- (BOOL)containsProduct:(Product*)product {
     
     for (Product *prod in self) {
         if ([prod.key isEqualToString:product.key]) {
@@ -20,6 +20,23 @@
     
     return false;
     
+}
+
+- (NSInteger)commentIndex:(ProductComment*)updatedComment
+{
+    NSInteger index = -1;
+    
+    for (ProductComment *currentComment in self)
+    {
+        if (currentComment.commentTime == updatedComment.commentTime &&
+            [currentComment.userId isEqualToString:updatedComment.userId])
+        {
+            index = [self indexOfObject:currentComment];
+            break;
+        }
+    }
+    
+    return index;
 }
 
 

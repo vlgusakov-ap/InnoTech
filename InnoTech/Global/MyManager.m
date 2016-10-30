@@ -7,7 +7,6 @@
 //
 
 #import "MyManager.h"
-//#import "AppDelegate.h"
 #import "Constants.h"
 @import FirebaseAuth;
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
@@ -15,6 +14,7 @@
 @import FirebaseRemoteConfig;
 #import <sys/sysctl.h>
 #import "PremiumManager.h"
+#import "NSArray+Check.h"
 
 @interface MyManager()
 
@@ -23,6 +23,9 @@
 @implementation MyManager {
     NSString *currentMD5;
     FIRDatabaseHandle addNewCommentHandler;
+    FIRDatabaseHandle updateCommentHandler;
+    FIRDatabaseHandle deleteCommentHandler;
+    
     UIImageView *offlineImage;
     NSUserDefaults *defaults;
 }
@@ -321,18 +324,38 @@
     addNewCommentHandler = [[self.commentsRef child:productKey]
      observeEventType:FIRDataEventTypeChildAdded
      withBlock:^(FIRDataSnapshot *snapshot) {
-         NSDictionary *comment = snapshot.value;
-         NSLog(@"comment: %@", comment);
-         NSLog(@"msg: %@", comment[kCommentText]);
+         NSDictionary *commentDict = snapshot.value;
+         ProductComment *comment = [ProductComment commentWithDictionary:commentDict];
          [self.currentComments insertObject:comment atIndex:0];
          [self.commentsDelegate tableViewAction:Add atIndex:0];
      }];
+    
+    updateCommentHandler = [[self.commentsRef child:productKey]
+                            observeEventType:FIRDataEventTypeChildChanged
+                            withBlock:^(FIRDataSnapshot *snapshot) {
+                                NSDictionary *dict = snapshot.value;
+                                ProductComment *comment = [ProductComment commentWithDictionary:dict];
+                                NSInteger commentIndex = [self.currentComments commentIndex:comment];
+                                self.currentComments[commentIndex] = comment;
+                                [self.commentsDelegate tableViewAction:Update atIndex:commentIndex];
+                            }];
+    deleteCommentHandler = [[self.commentsRef child:productKey]
+                            observeEventType:FIRDataEventTypeChildRemoved
+                            withBlock:^(FIRDataSnapshot *snapshot) {
+                                NSDictionary *dict = snapshot.value;
+                                ProductComment *comment = [ProductComment commentWithDictionary:dict];
+                                NSInteger commentIndex = [self.currentComments commentIndex:comment];
+                                [self.currentComments removeObjectAtIndex:commentIndex];
+                                [self.commentsDelegate tableViewAction:Delete atIndex:commentIndex];
+                            }];
 }
 
 // firebase
 - (void) removeListenersForProduct: (NSString *) productKey {
     [_currentComments removeAllObjects];
     [[self.commentsRef child:productKey] removeObserverWithHandle:addNewCommentHandler];
+    [[self.commentsRef child:productKey] removeObserverWithHandle:updateCommentHandler];
+    [[self.commentsRef child:productKey] removeObserverWithHandle:deleteCommentHandler];
 }
 
 - (BOOL) isIphone5Screen {
@@ -418,7 +441,6 @@
     
     return [dateText uppercaseString];
 }
-
 
 - (void)dealloc {
     // Should never be called, but just here for clarity really.

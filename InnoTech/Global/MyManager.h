@@ -62,7 +62,7 @@ typedef NS_ENUM(NSUInteger, FireBaseAction) {
 @property (nonatomic, strong) NSMutableArray *productsSnapshots;
 @property (nonatomic, strong) NSMutableDictionary *cachedWebsites;
 @property (nonatomic, strong) NSMutableDictionary *productsDict;
-@property (nonatomic, strong) NSMutableArray <NSDictionary*> *currentComments;
+@property (nonatomic, strong) NSMutableArray <ProductComment*> *currentComments;
 @property (nonatomic) BOOL toNewMsg;
 @property (strong, nonatomic) SDImageCache *imageCache;
 @property (nonatomic) BOOL menuOpened;

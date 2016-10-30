@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "Product.h"
+#import "ProductComment.h"
 
 @interface NSArray (Check)
 
 - (BOOL) containsProduct: (Product *) product;
+- (NSInteger)commentIndex:(ProductComment*)updatedComment;
 
 @end

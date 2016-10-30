@@ -14,6 +14,7 @@
 #import "SettingsViewController.h"
 #import "LoginManager.h"
 @import AFNetworking;
+#import "ProductComment.h"
 
 @interface CommentsViewController () <MyManagerDelegate>{
     MyManager *dao;
@@ -75,6 +76,10 @@
 }
 -(void) tableViewAction: (FireBaseAction) action atIndex: (NSUInteger) index {
     
+    if (index < 0 || index > dao.currentComments.count-1) {
+        return;
+    }
+    
     [self.tableView beginUpdates];
     switch (action) {
         case Add:
@@ -128,19 +133,16 @@
     
     // Configure the cell...
 //    NSLog(@"%@", dao.currentComments[indexPath.row]);
-    NSDictionary *chatData = dao.currentComments[indexPath.row];
-    NSString *name = [chatData objectForKey:@"name"];
-    NSString *comment = [chatData objectForKey:@"comment"];
-    cell.commentTextView.text = comment;
-    NSString *imgStr = [chatData objectForKey:@"img"];
-    NSURL *imgUrl = [NSURL URLWithString:imgStr];
-    BOOL isPremium = [[chatData objectForKey:kCommentPremiumStatus] boolValue];
-    cell.nameLabel.text = name;
+    ProductComment *productComment = dao.currentComments[indexPath.row];
+    cell.commentTextView.text = productComment.commentText;
+    NSURL *imgUrl = [NSURL URLWithString:productComment.imageUrl];
+    BOOL isPremium = productComment.isPremium;
+    cell.nameLabel.text = productComment.userName;
     [cell.personPicture sd_setImageWithURL:imgUrl];
     cell.personPicture.layer.cornerRadius = CGRectGetWidth(cell.personPicture.bounds)/2.0f;
     cell.personPicture.clipsToBounds = true;
     cell.crownImageView.image = (isPremium) ? [UIImage imageNamed:@"crown.png"] : nil;
-    cell.commentTime.text = [MyManager chatTimeFormat:[[chatData objectForKey:kCommentTimestamp] longValue]];
+    cell.commentTime.text = [MyManager chatTimeFormat:productComment.commentTime];
     
     cell.separatorInset = UIEdgeInsetsZero;
     cell.layoutMargins = UIEdgeInsetsZero;
