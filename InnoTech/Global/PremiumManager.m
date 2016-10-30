@@ -69,7 +69,6 @@ NSString* const kPremiumStatus = @"premiumStatus";
     {
         [self enablePremium:NO];
     }
-    
 }
 
 @end

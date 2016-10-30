@@ -123,6 +123,7 @@
 - (void) performAction: (FireBaseAction) action onSnapshot: (FIRDataSnapshot *) snapshot {
     
     //common
+    FireBaseAction tableViewAction = action;
     id productSnapshot = snapshot.value;
     NSArray *categories = productSnapshot[@"categories"];
     
@@ -153,7 +154,8 @@
                     [self.productsDict[category] removeObject:productToUpdate];
                     
                     if ([category isEqualToString:self.currentSection]) {
-                        [self.delegate tableViewAction: action atIndex: indexOfProductToUpdate];
+                        tableViewAction = Delete;
+                        [self.delegate tableViewAction:tableViewAction atIndex: indexOfProductToUpdate];
                         
                     }
 
@@ -163,30 +165,37 @@
         
         for (NSString *category in categories) {
             
-            if (self.productsDict[category] == nil) {
+            if (self.productsDict[category] == nil)
+            {
                 self.productsDict[category] = [NSMutableArray new];
             }
             
-            if (action == Add) {
+            if (action == Add)
+            {
                 [self.productsDict[category] insertObject:newProduct atIndex:0];
             } else
-                if (action == Update) {
-                    
-                    if ([self.productsDict[category] containsObject:productToUpdate]) {
+                if (action == Update)
+                {
+                    if ([self.productsDict[category] containsObject:productToUpdate])
+                    {
                         indexOfProductToUpdate = [self.productsDict[category] indexOfObject:productToUpdate];
-                        
-                    } else {
-                        indexOfProductToUpdate = 0;
+                        self.productsDict[category][indexOfProductToUpdate] = newProduct;
+                        tableViewAction = Update;
                     }
-                    self.productsDict[category][indexOfProductToUpdate] = newProduct;
+                    else
+                    {
+                        [self.productsDict[category] insertObject:newProduct atIndex:0];
+                        indexOfProductToUpdate = 0;
+                        tableViewAction = Add;
+                    }
                 }
             
-            if ([category isEqualToString:self.currentSection]) {
-
+            if ([category isEqualToString:self.currentSection])
+            {
                 NSUInteger index = (action == Add) ? 0: indexOfProductToUpdate;
                 NSLog(@"Product %@ inserted at index %ld", newProduct.name, index);
 
-                [self.delegate tableViewAction: action atIndex: index];
+                [self.delegate tableViewAction:tableViewAction atIndex: index];
                 
             }
         }
