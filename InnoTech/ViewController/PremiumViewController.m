@@ -13,6 +13,7 @@
 #import "MyManager.h"
 #import "MBProgressHUD.h"
 #import "PremiumManager.h"
+#import "UIViewController+Addons.h"
 
 @interface PremiumViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
@@ -121,7 +122,8 @@
                                             
                                             if(trans.error)
                                             {
-                                                NSLog(@"Fail %@",[trans.error localizedDescription]);
+                                                NSLog(@"Fail %@", [trans.error localizedDescription]);
+                                                [self showAlertWithTitle:@"Error" description:[trans.error localizedDescription]];
                                             }
                                             else if(trans.transactionState == SKPaymentTransactionStatePurchased) {
                                                 
