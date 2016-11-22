@@ -69,7 +69,7 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    self.currentTextLength.text = [NSString stringWithFormat:@"Min: 3 | %lu/200", textView.text.length];
+    self.currentTextLength.text = [NSString stringWithFormat:@"Min: 3 | %lu/200", (unsigned long)textView.text.length];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text

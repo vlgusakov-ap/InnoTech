@@ -66,9 +66,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)restorePurchase:(id)sender {
-    
-    
+- (IBAction)restorePurchase:(id)sender
+{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.label.text = @"Restoring...";
@@ -107,65 +106,83 @@
     
 }
 
-- (IBAction)upgradeToPremium:(id)sender {
-    
-    NSLog(@"%@",[IAPShare sharedHelper].iap.purchasedProducts);
+- (IBAction)upgradeToPremium:(id)sender
+{
+    [[IAPShare sharedHelper].iap requestProductsWithCompletion:^(SKProductsRequest *request, SKProductsResponse *response)
+    {
+        NSArray *products = response.products;
+        
+        if (response == nil || products.count < 1)
+        {
+            [self showAlertWithTitle:@"Error" description:@"Cannot connect to iTunes Store. Try again later!"];
+            return;
+        }
+        
+        SKProduct *product = products.firstObject;
+        
+        if ([[IAPShare sharedHelper].iap isPurchasedProductsIdentifier:kiTunesPremiumProductID])
+        {
+            [self showPremiumHUD];
+            return;
+        }
+        
+        [self buyPremium:product];
+ }];
+}
 
-    [[IAPShare sharedHelper].iap requestProductsWithCompletion:^(SKProductsRequest* request,SKProductsResponse* response)
-     {
-         if(response > 0 ) {
-             SKProduct* product =[[IAPShare sharedHelper].iap.products objectAtIndex:0];
-             
-             if(![[IAPShare sharedHelper].iap isPurchasedProductsIdentifier:kiTunesPremiumProductID]) {
-             [[IAPShare sharedHelper].iap buyProduct:product
-                                        onCompletion:^(SKPaymentTransaction* trans){
-                                            
-                                            if(trans.error)
-                                            {
-                                                NSLog(@"Fail %@", [trans.error localizedDescription]);
-                                                [self showAlertWithTitle:@"Error" description:[trans.error localizedDescription]];
-                                            }
-                                            else if(trans.transactionState == SKPaymentTransactionStatePurchased) {
-                                                
-                                                [[IAPShare sharedHelper].iap checkReceipt:[NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]] AndSharedSecret:kiTunesPremiumSharedSecret onCompletion:^(NSString *response, NSError *error) {
-                                                    
-                                                    //Convert JSON String to NSDictionary
-                                                    NSDictionary* rec = [IAPShare toJSON:response];
-                                                    
-                                                    if([rec[@"status"] integerValue]==0)
-                                                    {
-                                                        
-                                                        [[IAPShare sharedHelper].iap provideContentWithTransaction:trans];
-                                                        NSLog(@"SUCCESS %@",response);
-                                                        NSLog(@"Purchased %@",[IAPShare sharedHelper].iap.purchasedProducts);
-                                                        [[MyManager sharedManager] enablePremium:YES];
-
-                                                    }
-                                                    else {
-                                                        NSLog(@"Fail");
-                                                    }
-                                                }];
-                                            }
-                                            else if(trans.transactionState == SKPaymentTransactionStateFailed) {
-                                                NSLog(@"Fail");
-                                            }
-                                        }];//end of buy product
-             }
-             else
-             {
-                 MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                 hud.mode = MBProgressHUDModeCustomView;
-                 UIImage *image = [UIImage imageNamed:@"crown"];
-                 hud.customView = [[UIImageView alloc] initWithImage:image];
-                 hud.square = YES;
-                 hud.label.text = @"Premium ✓";
-                 [hud hideAnimated:YES afterDelay:3.f];
-
-             }
+- (void)buyPremium:(SKProduct*)product
+{
+    [[IAPShare sharedHelper].iap buyProduct:product
+                               onCompletion:^(SKPaymentTransaction* trans)
+    {
+         if (trans.error)
+         {
+             NSLog(@"Fail %@", [trans.error localizedDescription]);
+             [self showAlertWithTitle:@"Error" description:[trans.error localizedDescription]];
+             return;
+         }
+         
+         if (trans.transactionState == SKPaymentTransactionStatePurchased)
+         {
+             [self checkReceipt:trans];
+         }
+         else if (trans.transactionState == SKPaymentTransactionStateFailed)
+         {
+             [self showAlertWithTitle:@"Error" description:@"Failed to purchase this product. Try again later!"];
          }
      }];
-         
+}
 
+- (void)checkReceipt:(SKPaymentTransaction*)trans
+{
+    [[IAPShare sharedHelper].iap checkReceipt:[NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]] AndSharedSecret:kiTunesPremiumSharedSecret onCompletion:^(NSString *response, NSError *error)
+     {
+         //Convert JSON String to NSDictionary
+         NSDictionary *rec = [IAPShare toJSON:response];
+         
+         if ([rec[@"status"] integerValue] == 0)
+         {
+             [[IAPShare sharedHelper].iap provideContentWithTransaction:trans];
+             NSLog(@"SUCCESS %@",response);
+             NSLog(@"Purchased %@",[IAPShare sharedHelper].iap.purchasedProducts);
+             [[MyManager sharedManager] enablePremium:YES];
+         }
+         else
+         {
+             [self showAlertWithTitle:@"Error" description:error.localizedDescription];
+         }
+     }];
+}
+
+- (void)showPremiumHUD
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeCustomView;
+    UIImage *image = [UIImage imageNamed:@"crown"];
+    hud.customView = [[UIImageView alloc] initWithImage:image];
+    hud.square = YES;
+    hud.label.text = @"Premium ✓";
+    [hud hideAnimated:YES afterDelay:3.f];
 }
 
 @end
