@@ -11,21 +11,24 @@
 #import "NSURLRequest+Extended.h"
 @import GoogleMobileAds;
 @import FirebaseRemoteConfig;
+@import SafariServices;
 
 NSString *const kTwitterURL = @"";
 NSString *const kWWWURL = @"http://nycappstudio.com";
 NSString *const kFacebookURL = @"https://www.facebook.com/innotechapp";
 
-@interface AboutViewController ()
+@interface AboutViewController () <SFSafariViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @end
 
 @implementation AboutViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setMenuVC];
@@ -55,11 +58,12 @@ NSString *const kFacebookURL = @"https://www.facebook.com/innotechapp";
 //            NSLog(@"Error %@", error);
 //        }
 //    }];
-//    
+//
+    [self addParallaxToBackGroundImage];
 }
 
--(void) setMenuVC {
-    
+- (void)setMenuVC
+{
     SWRevealViewController *revealViewController = self.revealViewController;
     if (revealViewController)
     {
@@ -68,14 +72,68 @@ NSString *const kFacebookURL = @"https://www.facebook.com/innotechapp";
     }
 }
 
-- (IBAction)openTwitter:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: kTwitterURL]];
+- (void)addParallaxToBackGroundImage
+{
+    // Set vertical effect
+    UIInterpolatingMotionEffect *verticalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.y"
+     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    verticalMotionEffect.minimumRelativeValue = @(-15);
+    verticalMotionEffect.maximumRelativeValue = @(15);
+    
+    // Set horizontal effect
+    UIInterpolatingMotionEffect *horizontalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-15);
+    horizontalMotionEffect.maximumRelativeValue = @(15);
+    
+    // Create group to combine both
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    // Add both effects to your view
+    [self.backgroundImageView addMotionEffect:group];
 }
-- (IBAction)openWebsite:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: kWWWURL]];
+
+- (IBAction)openTwitter:(id)sender
+{
+    [self displaySafariWithURL:[NSURL URLWithString: kTwitterURL]];
 }
-- (IBAction)openFacebook:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: kFacebookURL]];
+- (IBAction)openWebsite:(id)sender
+{
+    [self displaySafariWithURL:[NSURL URLWithString: kWWWURL]];
+}
+- (IBAction)openFacebook:(id)sender
+{
+    [self displaySafariWithURL:[NSURL URLWithString: kFacebookURL]];
+}
+
+
+- (void)displaySafariWithURL:(NSURL*)url
+{
+    if ([[UIApplication sharedApplication] canOpenURL:url])
+    {
+        SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:url entersReaderIfAvailable:NO];
+        safariVC.delegate = self;
+        UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:safariVC];
+        [navigationController setNavigationBarHidden:YES animated:NO];
+        [self presentViewController:navigationController animated:YES completion:nil];
+    }
+}
+
+#pragma mark - SFSafariViewControllerDelegate
+
+-(void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully
+{
+    // Load finished
+}
+
+-(void)safariViewControllerDidFinish:(SFSafariViewController *)controller
+{
+    // Done button pressed
 }
 
 
