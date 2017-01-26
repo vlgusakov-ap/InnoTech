@@ -27,11 +27,13 @@
 #import "PremiumManager.h"
 
 
-@interface MainViewController () <MyManagerDelegate, UITableViewDataSource, UITableViewDelegate, AdMobDelegate>
+@interface MainViewController () <MyManagerDelegate, UITableViewDataSource, UITableViewDelegate, AdMobDelegate, UIViewControllerPreviewingDelegate>
 
 @property (strong, nonatomic) MainTableViewDataSource *mainDataSource;
 @property (strong, nonatomic) MainTableViewDelegate *mainDelegate;
 @property (strong, nonatomic) UIImageView *logo;
+
+@property (nonatomic, strong) id previewingContext;
 
 @end
 
@@ -44,7 +46,8 @@
 }
 
 #pragma mark - ViewController LifeCycle
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     //init DAO
@@ -82,6 +85,11 @@
     UIImage *backgroundImage = [UIImage imageNamed:@"background0125"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:backgroundImage];
     self.tableView.backgroundView = imageView;
+    
+    if ([self isForceTouchAvailable])
+    {
+        self.previewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
+    }
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -280,6 +288,91 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - 3D Touch
+
+- (BOOL)isForceTouchAvailable
+{
+    BOOL isForceTouchAvailable = NO;
+    if ([self.traitCollection respondsToSelector:@selector(forceTouchCapability)])
+    {
+        isForceTouchAvailable = self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable;
+    }
+    return isForceTouchAvailable;
+}
+
+- (nullable UIViewController *)previewingContext:(id <UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location
+{
+    // check if we're not already displaying a preview controller (WebViewController is my preview controller)
+    if ([self.presentedViewController isKindOfClass:[DetailViewController class]])
+    {
+        return nil;
+    }
+    
+    CGPoint cellPostion = [self.tableView convertPoint:location fromView:self.view];
+    NSIndexPath *path = [self.tableView indexPathForRowAtPoint:cellPostion];
+    
+    if (path)
+    {
+        UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:path];
+        
+        // get your UIStoryboard
+        
+        // set the view controller by initializing it form the storyboard
+        DetailViewController *previewController = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"detailVC"];
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tableCell];
+        NSArray *currentProducts = dao.productsDict[dao.currentSection];
+        NSUInteger productIndex = indexPath.row;
+        dao.currentProduct = currentProducts[productIndex];
+        DetailViewController *detailVC = (DetailViewController*)previewController;
+        detailVC.link = dao.currentProduct.urlString;
+        detailVC.title = [dao.currentProduct.name uppercaseString];
+        detailVC.selectedRow = indexPath.row;
+        
+        previewingContext.sourceRect = [self.view convertRect:tableCell.frame fromView:self.tableView];
+        UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:previewController];
+        previewController.commentsButton.hidden = YES;
+        
+        return navVC;
+    }
+    return nil;
+}
+
+- (void)previewingContext:(id <UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
+{
+    DetailViewController *viewController;
+    if ([viewControllerToCommit isKindOfClass:[UINavigationController class]])
+    {
+        viewController = (DetailViewController*)((UINavigationController*)viewControllerToCommit).topViewController;
+    }
+    else
+    {
+        viewController = (DetailViewController*)viewControllerToCommit;
+    }
+    viewController.commentsButton.hidden = NO;
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection
+{
+    [super traitCollectionDidChange:previousTraitCollection];
+    if ([self isForceTouchAvailable])
+    {
+        if (!self.previewingContext)
+        {
+            self.previewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
+        }
+    }
+    else
+    {
+        if (self.previewingContext)
+        {
+            [self unregisterForPreviewingWithContext:self.previewingContext];
+            self.previewingContext = nil;
+        }
+    }
 }
 
 @end
