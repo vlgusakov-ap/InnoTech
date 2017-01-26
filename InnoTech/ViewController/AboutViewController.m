@@ -120,7 +120,9 @@ NSString *const kFacebookURL = @"https://www.facebook.com/innotechapp";
         safariVC.delegate = self;
         UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:safariVC];
         [navigationController setNavigationBarHidden:YES animated:NO];
-        [self presentViewController:navigationController animated:YES completion:nil];
+        [self presentViewController:navigationController animated:YES completion:^{
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+        }];
     }
 }
 
@@ -134,6 +136,7 @@ NSString *const kFacebookURL = @"https://www.facebook.com/innotechapp";
 -(void)safariViewControllerDidFinish:(SFSafariViewController *)controller
 {
     // Done button pressed
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 
