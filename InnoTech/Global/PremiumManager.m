@@ -40,26 +40,20 @@ NSString* const kPremiumStatus = @"premiumStatus";
 - (void) enablePremium: (BOOL) enable {
     [[NSUserDefaults standardUserDefaults] setBool:enable forKey:kPremiumStatus];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    self.premiumStatus = enable;
 }
 
 - (void) initIAP
 {
     //init iap
-    if (![IAPShare sharedHelper].iap) {
-        NSSet* dataSet = [[NSSet alloc] initWithObjects:kiTunesPremiumProductID, nil];
-        
+    if (![IAPShare sharedHelper].iap)
+    {
+        NSSet *dataSet = [[NSSet alloc] initWithObjects:kiTunesPremiumProductID, nil];
         [IAPShare sharedHelper].iap = [[IAPHelper alloc] initWithProductIdentifiers:dataSet];
     }
     
-//    BOOL isProduction;
-//#if DEBUG
-//    isProduction = NO;
-//#else
-//    isProduction = YES;
-//#endif
     [IAPShare sharedHelper].iap.production = YES;
 
-    NSLog(@"%@",[IAPShare sharedHelper].iap.purchasedProducts);
 
     if ([[IAPShare sharedHelper].iap isPurchasedProductsIdentifier:kiTunesPremiumProductID])
     {

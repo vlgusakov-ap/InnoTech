@@ -8,7 +8,8 @@
 
 @import UIKit;
 
-typedef NS_ENUM(NSInteger, PremiumStatus) {
+typedef NS_ENUM(NSInteger, PremiumStatus)
+{
     Inactive = 0,
     Active = 1
 };

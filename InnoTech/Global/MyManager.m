@@ -77,7 +77,7 @@
         
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
         NSArray *localNotifArr = [[UIApplication sharedApplication] scheduledLocalNotifications];
-        NSLog(@"%ld notifications are planned", localNotifArr.count);
+        NSLog(@"%ld notifications are planned", (unsigned long)localNotifArr.count);
 
         
         if (localNotifArr.count == 0 || localNotifArr == nil) {
@@ -193,7 +193,7 @@
             if ([category isEqualToString:self.currentSection])
             {
                 NSUInteger index = (action == Add) ? 0: indexOfProductToUpdate;
-                NSLog(@"Product %@ inserted at index %ld", newProduct.name, index);
+                NSLog(@"Product %@ inserted at index %ld", newProduct.name, (unsigned long)index);
 
                 [self.delegate tableViewAction:tableViewAction atIndex: index];
                 
@@ -321,7 +321,7 @@
                               kCommentTimestamp: @([Constants currentTime])
                               };
     
-    NSString *to = [NSString stringWithFormat:@"/%@/%lu/", key, self.currentComments.count];
+    NSString *to = [NSString stringWithFormat:@"/%@/%lu/", key, (unsigned long)self.currentComments.count];
     NSDictionary *childUpdates = @{to: comment,
                                    };
     [self.commentsRef updateChildValues:childUpdates];
@@ -419,25 +419,25 @@
     {
         NSInteger minutes = diff / SECONDS_PER_MINUTE;
         NSString *minString = (minutes == 1) ? @"minute" : @"minutes";
-        dateText = [NSString stringWithFormat:@"%ld %@ ago", minutes, minString];
+        dateText = [NSString stringWithFormat:@"%ld %@ ago", (long)minutes, minString];
     }
     else if (hoursAgo)
     {
         NSInteger hours = diff / SECONDS_PER_HOUR;
         NSString *hoursString = (hours == 1) ? @"hour" : @"hours";
-        dateText = [NSString stringWithFormat:@"%ld %@ ago", hours, hoursString];
+        dateText = [NSString stringWithFormat:@"%ld %@ ago", (long)hours, hoursString];
     }
     else if (daysAgo)
     {
         NSInteger days = diff / SECONDS_PER_DAY;
         NSString *daysString = (days == 1) ? @"day" : @"days";
-        dateText = [NSString stringWithFormat:@"%ld %@ ago", days, daysString];
+        dateText = [NSString stringWithFormat:@"%ld %@ ago", (long)days, daysString];
     }
     else if (weeksAgo)
     {
         NSInteger weeks = diff / SECONDS_PER_WEEK;
         NSString *weeksString = (weeks == 1) ? @"week" : @"weeks";
-        dateText = [NSString stringWithFormat:@"%ld %@ ago", weeks, weeksString];
+        dateText = [NSString stringWithFormat:@"%ld %@ ago", (long)weeks, weeksString];
     }
     else
     {

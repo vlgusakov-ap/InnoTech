@@ -16,7 +16,7 @@
     if (self)
     {
         self.commentText = dict[@"comment"];
-        self.commentTime = dict[@"commentTime"];
+        self.commentTime = [dict[@"commentTime"] longValue];
         self.imageUrl = dict[@"img"];
         self.isPremium = [dict[@"isPremium"] boolValue];
         self.userName = dict[@"name"];
