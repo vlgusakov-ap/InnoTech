@@ -79,6 +79,9 @@
     {
         self.tableView.tableHeaderView = nil;
     }
+    UIImage *backgroundImage = [UIImage imageNamed:@"background0125"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:backgroundImage];
+    self.tableView.backgroundView = imageView;
 }
 
 - (void) viewWillDisappear:(BOOL)animated
