@@ -39,6 +39,11 @@
     
 //    self.upgradeButton.hidden = ([[MyManager sharedManager] premiumStatus] == Active);
 
+    if ([[PremiumManager sharedManager] premiumStatus] == Active)
+    {
+        [self.upgradeButton setTitle:@"Premium is active" forState:UIControlStateNormal];
+        self.upgradeButton.backgroundColor = [UIColor orangeColor];
+    }
 
 }
 
@@ -166,6 +171,9 @@
              NSLog(@"SUCCESS %@",response);
              NSLog(@"Purchased %@",[IAPShare sharedHelper].iap.purchasedProducts);
              [[MyManager sharedManager] enablePremium:YES];
+             
+             [self.upgradeButton setTitle:@"Premium is active" forState:UIControlStateNormal];
+             self.upgradeButton.backgroundColor = [UIColor orangeColor];
          }
          else
          {
