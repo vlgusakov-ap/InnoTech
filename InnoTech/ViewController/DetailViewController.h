@@ -11,6 +11,7 @@
 
 @interface DetailViewController: BaseViewController <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIButton *commentsButton;
 @property (strong, nonatomic) NSString *link;
 @property (nonatomic) NSUInteger selectedRow;
 @property (strong, nonatomic) NSURLRequest *request;

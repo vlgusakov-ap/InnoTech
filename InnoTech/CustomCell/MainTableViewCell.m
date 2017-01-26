@@ -14,17 +14,21 @@
 @import SDWebImage;
 
 @interface MainTableViewCell ()
+@property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (weak, nonatomic) IBOutlet UIView *titleDesctiptionView;
 @end
 
 @implementation MainTableViewCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
     // Initialization code
+    self.mainView.layer.cornerRadius = 15;
 }
 
-- (void) prepareForReuse {
+- (void) prepareForReuse
+{
     [super prepareForReuse];
     self.backgroundImageView.image = NULL;
     self.backgroundImageView.clipsToBounds = true;
@@ -86,10 +90,10 @@
                                attributes:typingAttributes];
     self.descr.attributedText = str;
     self.descr.layer.masksToBounds = YES;
-    self.titleDesctiptionView.backgroundColor = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 0.3];
-    self.titleDesctiptionView.layer.cornerRadius = 5.0f;
+    self.titleDesctiptionView.backgroundColor = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 0.4];
 
-    if ([dao.cachedWebsites[product.urlString.MD5] isEqual: @YES]) {
+    if ([dao.cachedWebsites[product.urlString.MD5] isEqual: @YES])
+    {
         product.cached = true;
         self.cachedIcon.hidden = false;
     }

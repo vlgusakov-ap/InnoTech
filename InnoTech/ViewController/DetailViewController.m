@@ -24,6 +24,8 @@
 - (IBAction)share:(id)sender;
 
 @property (strong, nonatomic) DetailModel *model;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *moreOptionsButton;
 
 @end
 
@@ -86,8 +88,9 @@
     }
     
 }
-- (IBAction)moreOptions:(id)sender {
-    
+- (IBAction)moreOptions:(id)sender
+{
+    [self.model moreOptions].popoverPresentationController.barButtonItem = self.moreOptionsButton;
     [self presentViewController:[self.model moreOptions] animated:true completion:nil];
 }
 

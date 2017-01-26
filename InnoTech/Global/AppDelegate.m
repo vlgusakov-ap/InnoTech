@@ -58,7 +58,7 @@
         }
     }
     
-    [self checkForNewerVersionAfterDelay:1];
+//    [self checkForNewerVersionAfterDelay:1];
     
     return YES;
 }
@@ -218,6 +218,7 @@
                 
                 [alertController addAction:cancelAction];
                 [alertController addAction:updateAction];
+                [alertController setPreferredAction:updateAction];
                 NSLog(@"Need to update [%@ != %@]", appStoreVersion, currentVersion);
                 
                 // Delay execution of my block for 3 seconds.
